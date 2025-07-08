@@ -42,10 +42,10 @@
 
 在本章中，由于引入了语义信息，各种符号定义与第三章有所不同。基类数据集与新类数据集分别表示为：
 \begin{equation}
-\begin{aligned}
-  &\mathcal{D}_{base} = \{(x, y, s)|x \in X^{base}, y \in Y^{base}, s \in S^{base}\},\\
-  &\mathcal{D}_{novel} = \{(x, y, s)|x \in X^{novel}, y \in Y^{novel}, s \in S^{novel}\}.
-\end{aligned}
+  \begin{aligned}
+     & \mathcal{D}_{base} = \{(x, y, s)|x \in X^{base}, y \in Y^{base}, s \in S^{base}\},     \\
+     & \mathcal{D}_{novel} = \{(x, y, s)|x \in X^{novel}, y \in Y^{novel}, s \in S^{novel}\}.
+  \end{aligned}
 \end{equation}
 其中，$\mathcal{D}_{base}$所包含的类别$\mathcal{C}_{base}$和$\mathcal{D}_{novel}$所包含的类别$\mathcal{C}_{novel}$不相交。另外，$x$、$y$、$s$分别表示样本图像、样本标签、以及样本语义特征；$X^{base}$、$Y^{base}$、$S^{base}$分别表示基类样本图像集合、标签集合、语义特征集合；$X^{novel}$、$Y^{novel}$、$S^{novel}$则分别表示新类样本图像集合、标签集合、语义特征集合。在本章中，语义特征是通过将类别名称/提示文本+类别名称输入自然语言处理模型或者多模态模型的文本编码器得到的。
 
@@ -452,18 +452,18 @@ SVMSMA模型在整个基类数据集进行训练，没有采用元学习的方�
     \midrule
     \multirow{3}*{miniImageNet}
         & SP-CLIP & Visformer-T & 72.31 $\pm$ 0.40          & 83.42 $\pm$ 0.30          \\
-        & SVMSMA   & Visformer-T & 73.51 $\pm$ 0.38          & 83.29 $\pm$ 0.32          \\
-        & SVMSMA   & ResNet-12   & \textbf{79.58 $\pm$ 0.35} & \textbf{85.19 $\pm$ 0.29} \\
+        & SVMSMA  & Visformer-T & 73.51 $\pm$ 0.38          & 83.29 $\pm$ 0.32          \\
+        & SVMSMA  & ResNet-12   & \textbf{79.58 $\pm$ 0.35} & \textbf{85.19 $\pm$ 0.29} \\
     \midrule
     \multirow{3}*{tieredImageNet}
         & SP-CLIP & Visformer-T & 78.03 $\pm$ 0.46          & 88.55 $\pm$ 0.32          \\
-        & SVMSMA   & Visformer-T & \textbf{79.48 $\pm$ 0.44} & \textbf{88.59 $\pm$ 0.32} \\
-        & SVMSMA   & ResNet-12   & 75.35 $\pm$ 0.47          & 86.35 $\pm$ 0.34          \\
+        & SVMSMA  & Visformer-T & \textbf{79.48 $\pm$ 0.44} & \textbf{88.59 $\pm$ 0.32} \\
+        & SVMSMA  & ResNet-12   & 75.35 $\pm$ 0.47          & 86.35 $\pm$ 0.34          \\
     \midrule
     \multirow{3}*{CIFAR-FS}
         & SP-CLIP & Visformer-T & 82.18 $\pm$ 0.40          & 88.24 $\pm$ 0.32          \\
-        & SVMSMA   & Visformer-T & 82.44 $\pm$ 0.38          & 88.32 $\pm$ 0.33          \\
-        & SVMSMA   & ResNet-12   & \textbf{86.35 $\pm$ 0.35} & \textbf{89.42 $\pm$ 0.30} \\
+        & SVMSMA  & Visformer-T & 82.44 $\pm$ 0.38          & 88.32 $\pm$ 0.33          \\
+        & SVMSMA  & ResNet-12   & \textbf{86.35 $\pm$ 0.35} & \textbf{89.42 $\pm$ 0.30} \\
     \bottomrule
   \end{tabularx}
   % \vspace{-25pt}
@@ -493,19 +493,19 @@ SVMSMA模型在整个基类数据集进行训练，没有采用元学习的方�
         & Baseline         & 69.57 $\pm$ 0.45          & 84.41 $\pm$ 0.30          \\
         & Baseline w/ CMC  & 76.41 $\pm$ 0.39          & 84.74 $\pm$ 0.29          \\
         & Baseline w/ CMFA & 78.82 $\pm$ 0.36          & 84.82 $\pm$ 0.29          \\
-        & SVMSMA            & \textbf{79.58 $\pm$ 0.35} & \textbf{85.19 $\pm$ 0.29} \\
+        & SVMSMA           & \textbf{79.58 $\pm$ 0.35} & \textbf{85.19 $\pm$ 0.29} \\
     \midrule
     \multirow{4}{*}{CIFAR-FS}
         & Baseline         & 78.54 $\pm$ 0.47          & 88.64 $\pm$ 0.32          \\
         & Baseline w/ CMC  & 84.18 $\pm$ 0.39          & 89.12 $\pm$ 0.31          \\
         & Baseline w/ CMFA & 85.31 $\pm$ 0.38          & 89.18 $\pm$ 0.31          \\
-        & SVMSMA            & \textbf{86.35 $\pm$ 0.35} & \textbf{89.42 $\pm$ 0.30} \\
+        & SVMSMA           & \textbf{86.35 $\pm$ 0.35} & \textbf{89.42 $\pm$ 0.30} \\
     \midrule
     \multirow{4}{*}{CUB}
         & Baseline         & 86.14 $\pm$ 0.38          & 94.75 $\pm$ 0.19          \\
         & Baseline w/ CMC  & 90.20 $\pm$ 0.30          & 94.65 $\pm$ 0.19          \\
         & Baseline w/ CMFA & 91.02 $\pm$ 0.29          & 94.65 $\pm$ 0.19          \\
-        & SVMSMA            & \textbf{91.17 $\pm$ 0.28} & \textbf{94.91 $\pm$ 0.19} \\
+        & SVMSMA           & \textbf{91.17 $\pm$ 0.28} & \textbf{94.91 $\pm$ 0.19} \\
     \bottomrule
   \end{tabularx}
   % \vspace{-25pt}
@@ -564,19 +564,19 @@ $\alpha$是调整不同损失权重占比的超参数，本文通过将其设置
         & 视觉特征    & 69.57 $\pm$ 0.45          & 84.41 $\pm$ 0.30          \\
         & 单模态映射特征 & 73.73 $\pm$ 0.39          & 73.83 $\pm$ 0.39          \\
         & 多模态映射特征 & 78.34 $\pm$ 0.37          & 81.29 $\pm$ 0.34          \\
-        & SVMSMA   & \textbf{79.58 $\pm$ 0.35} & \textbf{85.19 $\pm$ 0.29} \\
+        & SVMSMA  & \textbf{79.58 $\pm$ 0.35} & \textbf{85.19 $\pm$ 0.29} \\
     \midrule
     \multirow{4}{*}{CIFAR-FS}
         & 视觉特征    & 78.54 $\pm$ 0.47          & 88.64 $\pm$ 0.32          \\
         & 单模态映射特征 & 83.44 $\pm$ 0.37          & 83.60 $\pm$ 0.38          \\
         & 多模态映射特征 & 86.00 $\pm$ 0.36          & 87.40 $\pm$ 0.33          \\
-        & SVMSMA   & \textbf{86.35 $\pm$ 0.35} & \textbf{89.42 $\pm$ 0.30} \\
+        & SVMSMA  & \textbf{86.35 $\pm$ 0.35} & \textbf{89.42 $\pm$ 0.30} \\
     \midrule
     \multirow{4}{*}{CUB}
         & 视觉特征    & 86.14 $\pm$ 0.38          & 94.75 $\pm$ 0.19          \\
         & 单模态映射特征 & 83.58 $\pm$ 0.43          & 83.53 $\pm$ 0.43          \\
         & 多模态映射特征 & 89.90 $\pm$ 0.31          & 93.60 $\pm$ 0.22          \\
-        & SVMSMA   & \textbf{91.17 $\pm$ 0.28} & \textbf{94.91 $\pm$ 0.19} \\
+        & SVMSMA  & \textbf{91.17 $\pm$ 0.28} & \textbf{94.91 $\pm$ 0.19} \\
     \bottomrule
   \end{tabularx}
   % \vspace{-25pt}
@@ -599,24 +599,24 @@ $\alpha$是调整不同损失权重占比的超参数，本文通过将其设置
   \bicaption[SVMSMA在miniImageNet、CIFAR-FS和CUB数据集上的不同语义特征消融实验]{SVMSMA在miniImageNet、CIFAR-FS和CUB数据集上的不同语义特征消融实验。最优结果用粗体表示。}{Different semantic features ablation experiments of SVMSMA on miniImageNet, CIFAR-FS and CUB. The best results are shown in bold.}    % 中英文标题
   \begin{tabularx}{\textwidth}{ClCC}
     \toprule
-    数据集 & 方法                 & 5-way 1-shot              & 5-way 5-shot              \\
+    数据集 & 方法                  & 5-way 1-shot              & 5-way 5-shot              \\
     \midrule
     \multirow{4}{*}{miniImageNet}
-        & Baseline           & 69.57 $\pm$ 0.45          & 84.41 $\pm$ 0.30          \\
+        & Baseline            & 69.57 $\pm$ 0.45          & 84.41 $\pm$ 0.30          \\
         & SVMSMA-GloVe (name) & 71.53 $\pm$ 0.46          & 81.49 $\pm$ 0.34          \\
         & SVMSMA-SBERT (name) & 73.29 $\pm$ 0.43          & 82.94 $\pm$ 0.32          \\
         & SVMSMA-CLIP (name)  & 78.16 $\pm$ 0.37          & 84.93 $\pm$ 0.28          \\
         & SVMSMA-CLIP (text)  & \textbf{79.58 $\pm$ 0.35} & \textbf{85.19 $\pm$ 0.29} \\
     \midrule
     \multirow{4}{*}{CIFAR-FS}
-        & Baseline           & 78.54 $\pm$ 0.47          & 88.64 $\pm$ 0.32          \\
+        & Baseline            & 78.54 $\pm$ 0.47          & 88.64 $\pm$ 0.32          \\
         & SVMSMA-GloVe (name) & 83.19 $\pm$ 0.40          & 88.25 $\pm$ 0.32          \\
         & SVMSMA-SBERT (name) & 82.24 $\pm$ 0.41          & 88.15 $\pm$ 0.31          \\
         & SVMSMA-CLIP (name)  & 85.34 $\pm$ 0.37          & 89.24 $\pm$ 0.30          \\
         & SVMSMA-CLIP (text)  & \textbf{86.35 $\pm$ 0.35} & \textbf{89.42 $\pm$ 0.30} \\
     \midrule
     \multirow{4}{*}{CUB}
-        & Baseline           & 86.14 $\pm$ 0.38          & 94.75 $\pm$ 0.19          \\
+        & Baseline            & 86.14 $\pm$ 0.38          & 94.75 $\pm$ 0.19          \\
         & SVMSMA-GloVe (name) & 87.67 $\pm$ 0.35          & 93.83 $\pm$ 0.21          \\
         & SVMSMA-SBERT (name) & 87.40 $\pm$ 0.35          & 94.20 $\pm$ 0.20          \\
         & SVMSMA-CLIP (name)  & 91.06 $\pm$ 0.28          & \textbf{94.91 $\pm$ 0.19} \\

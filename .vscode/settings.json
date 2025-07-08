@@ -1,0 +1,8 @@
+{
+    "makefile.configureOnOpen": false,
+    "latex-workshop.latex.build.rootfileInStatus": true,
+    "latex-workshop.latex.clean.subfolder.enabled": true,
+    "latex-workshop.latex.autoClean.run": "onFailed",
+    "latex-workshop.latex.outDir": "%DIR%/build",
+    "latex-workshop.latex.rootFile.doNotPrompt": true
+}
