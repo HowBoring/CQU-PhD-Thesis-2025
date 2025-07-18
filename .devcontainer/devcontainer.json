@@ -1,0 +1,28 @@
+{
+    "name": "LaTeX Development Environment",
+    "image": "texlive/texlive:latest",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "James-Yu.latex-workshop",
+                "tecosaur.latex-utilities",
+                "ms-vscode.makefile-tools",
+                "vscodevim.vim",
+                "redhat.vscode-yaml",
+                "DavidAnson.vscode-markdownlint",
+                "shardulm94.trailing-spaces", // Highlights straight whitespace
+                "stkb.rewrap" // Enables word-wrap on comments
+            ]
+        }
+    },
+    "mounts": [
+        "source=/mnt/c/Windows/Fonts,target=/usr/share/fonts/win-fonts,type=bind,readonly",
+        "source=/home/howboring/.ssh,target=/root/.ssh,type=bind,readonly"
+    ],
+    "postCreateCommand": "sed -i 's/\\w\\+.debian.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list.d/debian.sources && apt-get update && apt-get install -y zsh git curl wget nano vim tree htop unzip zip && fc-cache -fv",
+    "remoteUser": "root",
+    "features": {},
+    "forwardPorts": [],
+    "postStartCommand": "",
+    "shutdownAction": "stopContainer"
+}

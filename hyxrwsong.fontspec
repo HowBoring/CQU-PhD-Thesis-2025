@@ -1,0 +1,6 @@
+\setCJKmainfont{HYXinRenWenSong}[
+  UprightFont = HYXinRenWenSong55W,
+  BoldFont = HYXinRenWenSong65W,
+  ItalicFont = HYKaiTiS,
+  Extension = .ttf
+]

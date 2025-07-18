@@ -26,32 +26,46 @@
 \usepackage{subfiles}
 
 \usepackage{cquthesis}
+\usepackage{newtxmath}
 
-\setCJKfamilyfont{hyxrwsong}[
-	UprightFont = {HYXinRenWenSong 55W},
-	BoldFont = {HYXinRenWenSong 65W},
-]{HYXinRenWenSong}
-\renewcommand\songti{\CJKfamily{hyxrwsong}\selectfont}
-\setCJKmainfont[
-	UprightFont = {HYXinRenWenSong 55W},
-	BoldFont = {HYXinRenWenSong 65W},
-	ItalicFont = {HYKaiTiS.ttf},
-]{HYXinRenWenSong}
+% \setCJKfamilyfont{hyxrwsong}[
+% 	UprightFont = {HYXinRenWenSong 55W},
+% 	BoldFont = {HYXinRenWenSong 65W},
+% ]{HYXinRenWenSong}
+% \renewcommand\songti{\CJKfamily{hyxrwsong}\selectfont}
+% \setCJKmainfont[
+% 	UprightFont = {HYXinRenWenSong 55W},
+% 	BoldFont = {HYXinRenWenSong 65W},
+% 	ItalicFont = {HYKaiTiS.ttf},
+% ]{HYXinRenWenSong}
+% \defaultfontfeatures{hyxrwsong}
+\setCJKmainfont{HYXinRenWenSong}[
+  Path = {/usr/share/fonts/win-fonts/},
+  UprightFont = HYXinRenWenSong55W,
+  BoldFont = HYXinRenWenSong65W,
+  ItalicFont = HYKaiTiS,
+  Extension = .ttf
+]
 
 % 定义所有的图片文件在 figures 子目录下
 \graphicspath{{figures/}}
 
 % 定义数字圆
+% \usepackage{tikz}
+% \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+%             \node[shape=circle,draw,inner sep=1pt] (char) {\small #1};}}
 \usepackage{tikz}
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
-            \node[shape=circle,draw,inner sep=1pt] (char) {\small #1};}}
+    \node[shape=circle,draw,inner sep=1pt,
+          % Check if current font is bold, then adjust line width and font
+          /utils/exec=\ifx\f@series\bfseries\pgfextra{\pgfkeyssetvalue{/tikz/line width}{1pt}\global\let\tikz@textfont=\bfseries}\fi
+         ] (char) {#1};
+}}
 
-%*** 写作时，使用这个命令只渲染你想查看的部分，提升工作效率，定稿时注释掉整行
-% \includeonly{contents/introduction}
-% \includeonly{contents/related_work}
-% \includeonly{contents/MGRCL}
-% \includeonly{contents/S2V}
-
+% 自定义章节命令（含 \hspace 控制）
+\newcommand{\mychapter}[1][]{ \chapter[\hspace{0pt}#1]{{\heiti\zihao{3}\hspace{0pt}#1}} }
+\newcommand{\mysection}[1][]{ \section[\hspace{-2pt}#1]{{\heiti\zihao{-3}\hspace{-8#1pt}}} }
+\newcommand{\mysubsection}[1][]{ \subsection[\hspace{-2pt}#1]{{\heiti\zihao{4}\hspace{-8#1pt}}} }
 
 \begin{document}
 
@@ -102,12 +116,12 @@
 %\listofequationsEN
 %% 符号对照表，可选
 % \clearpage
-% \phantomsection 
+% \phantomsection
 % \addcontentsline{toc}{chapter}{主要符号对照表}
 % \input{contents/denotation}
 % %% 缩略语对照表，可选
 % \clearpage
-% \phantomsection 
+% \phantomsection
 % \addcontentsline{toc}{chapter}{缩略语对照表}
 % \input{contents/abbreviate}
 
@@ -124,7 +138,7 @@
 \backmatter %%% 后置部分(致谢、参考文献、附录等)
 
 %% 参考文献
-% 顺序编码制：cqunumerical		
+% 顺序编码制：cqunumerical
 % 注意：至少需要引用一篇参考文献，否则下面两行会引起编译错误。
 % \bibliographystyle{cqunumerical}
 \bibliographystyle{gbt7714-numerical_new}
