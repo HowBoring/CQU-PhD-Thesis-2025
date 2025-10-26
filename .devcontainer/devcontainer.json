@@ -17,9 +17,9 @@
     },
     "mounts": [
         "source=/mnt/c/Windows/Fonts,target=/usr/share/fonts/win-fonts,type=bind,readonly",
-        "source=/home/howboring/.ssh,target=/root/.ssh,type=bind,readonly"
+        // "source=/home/howboring/.ssh,target=/root/.ssh,type=bind,readonly,"
     ],
-    "postCreateCommand": "sed -i 's/\\w\\+.debian.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list.d/debian.sources && apt-get update && apt-get install -y zsh git curl wget nano vim tree htop unzip zip && fc-cache -fv",
+    "postCreateCommand": "sed -i 's/\\w\\+.debian.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list.d/debian.sources && apt-get update && apt-get install -y zsh git curl wget nano vim tree htop unzip zip openssh-client && fc-cache -fv",
     "remoteUser": "root",
     "features": {},
     "forwardPorts": [],

@@ -1,0 +1,111 @@
+%% Creator: Inkscape 1.4.2 (f4327f4, 2025-05-13), www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'Ch1-1_model_parameter_evolve.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{552bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.73345408)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0.17737771,0.69713229){\color[rgb]{0.17647059,0.18039216,0.17647059}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{典型人工智能系统参数规模的指数增长趋势}\end{tabular}}}}%
+    \put(0.54192656,0.09843239){\color[rgb]{0.35686275,0.35686275,0.35686275}\makebox(0,0)[t]{\smash{\begin{tabular}[t]{c}\textbf{发布时间}\end{tabular}}}}%
+    \put(0.10107739,0.12737259){\color[rgb]{0.35686275,0.35686275,0.35686275}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Jul 2, 1950\end{tabular}}}}%
+    \put(0.27448771,0.12737259){\color[rgb]{0.35686275,0.35686275,0.35686275}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Apr 19, 1965\end{tabular}}}}%
+    \put(0.43494968,0.12737259){\color[rgb]{0.35686275,0.35686275,0.35686275}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Dec 27, 1978\end{tabular}}}}%
+    \put(0.59541164,0.12737259){\color[rgb]{0.35686275,0.35686275,0.35686275}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Sep 4, 1992\end{tabular}}}}%
+    \put(0.75587361,0.12737259){\color[rgb]{0.35686275,0.35686275,0.35686275}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}May 14, 2006\end{tabular}}}}%
+    \put(0.91633553,0.12737259){\color[rgb]{0.35686275,0.35686275,0.35686275}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Jan 21, 2020\end{tabular}}}}%
+    \put(0.00967794,0.63878565){\color[rgb]{0.35686275,0.35686275,0.35686275}\makebox(0,0)[lt]{\smash{\begin{tabular}[t]{l}\textbf{模型参数量}\end{tabular}}}}%
+    \put(0.09428391,0.19136717){\color[rgb]{0.35686275,0.35686275,0.35686275}\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}100\end{tabular}}}}%
+    \put(0.09428391,0.23280738){\color[rgb]{0.35686275,0.35686275,0.35686275}\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}1,000\end{tabular}}}}%
+    \put(0.09428391,0.27411172){\color[rgb]{0.35686275,0.35686275,0.35686275}\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}10,000\end{tabular}}}}%
+    \put(0.09428391,0.31555194){\color[rgb]{0.35686275,0.35686275,0.35686275}\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}100,000\end{tabular}}}}%
+    \put(0.09428391,0.35685632){\color[rgb]{0.35686275,0.35686275,0.35686275}\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}1 million\end{tabular}}}}%
+    \put(0.09428391,0.39816066){\color[rgb]{0.35686275,0.35686275,0.35686275}\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}10 million\end{tabular}}}}%
+    \put(0.09428391,0.43960088){\color[rgb]{0.35686275,0.35686275,0.35686275}\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}100 million\end{tabular}}}}%
+    \put(0.09428391,0.48090522){\color[rgb]{0.35686275,0.35686275,0.35686275}\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}1 billion\end{tabular}}}}%
+    \put(0.09428391,0.52234544){\color[rgb]{0.35686275,0.35686275,0.35686275}\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}10 billion\end{tabular}}}}%
+    \put(0.09428391,0.56364978){\color[rgb]{0.35686275,0.35686275,0.35686275}\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}100 billion\end{tabular}}}}%
+    \put(0.09428391,0.60495414){\color[rgb]{0.35686275,0.35686275,0.35686275}\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}1 trillion\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{Ch1-1_model_parameter_evolve.pdf}}%
+    \put(0.09691979,0.15182912){\color[rgb]{1,1,1}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Jul 2, 1950\end{tabular}}}}%
+    \put(0.09691979,0.15182912){\color[rgb]{0.29803922,0.41568627,0.61176471}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Jul 2, 1950\end{tabular}}}}%
+    \put(0.48169108,0.36260358){\color[rgb]{1,1,1}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{1.2x/year between 1950–2010}\end{tabular}}}}%
+    \put(0.48169108,0.36260358){\color[rgb]{0.29803922,0.41568627,0.61176471}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{1.2x/year between 1950–2010}\end{tabular}}}}%
+    \put(0.10071055,0.17859544){\color[rgb]{1,1,1}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{Theseus}\end{tabular}}}}%
+    \put(0.10071055,0.17859544){\color[rgb]{0.29803922,0.41568627,0.61176471}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{Theseus}\end{tabular}}}}%
+    \put(0.21484098,0.23566065){\color[rgb]{1,1,1}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{Perceptron (1960)}\end{tabular}}}}%
+    \put(0.21484098,0.23566065){\color[rgb]{0.29803922,0.41568627,0.61176471}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{Perceptron (1960)}\end{tabular}}}}%
+    \put(0.64962359,0.27370413){\color[rgb]{1,1,1}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{Deep Blue}\end{tabular}}}}%
+    \put(0.64962359,0.27370413){\color[rgb]{0.29803922,0.41568627,0.61176471}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{Deep Blue}\end{tabular}}}}%
+    \put(0.72349587,0.32839163){\color[rgb]{1,1,1}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Jan 1, 2010\end{tabular}}}}%
+    \put(0.72349587,0.32839163){\color[rgb]{0.59215686,0,0.2745098}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Jan 1, 2010\end{tabular}}}}%
+    \put(0.69925678,0.53958729){\color[rgb]{1,1,1}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{2.0x/year between 2010–2025}\end{tabular}}}}%
+    \put(0.69925678,0.53958729){\color[rgb]{0.59215686,0,0.2745098}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{2.0x/year between 2010–2025}\end{tabular}}}}%
+    \put(0.74286508,0.42465116){\color[rgb]{1,1,1}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{AlexNet}\end{tabular}}}}%
+    \put(0.74286508,0.42465116){\color[rgb]{0.59215686,0,0.2745098}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{AlexNet}\end{tabular}}}}%
+    \put(0.68736679,0.44895101){\color[rgb]{1,1,1}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{Transformer (2017)}\end{tabular}}}}%
+    \put(0.68736679,0.44895101){\color[rgb]{0.59215686,0,0.2745098}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{Transformer (2017)}\end{tabular}}}}%
+    \put(0.92138337,0.44567458){\color[rgb]{1,1,1}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{GPT-1}\end{tabular}}}}%
+    \put(0.92138337,0.44567458){\color[rgb]{0.59215686,0,0.2745098}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{GPT-1}\end{tabular}}}}%
+    \put(0.82480618,0.48261408){\color[rgb]{1,1,1}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{DeBERTa}\end{tabular}}}}%
+    \put(0.82480618,0.48261408){\color[rgb]{0.57647059,0.15686275,0.20392157}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{DeBERTa}\end{tabular}}}}%
+    \put(0.87955347,0.61125502){\color[rgb]{1,1,1}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{GPT-4}\end{tabular}}}}%
+    \put(0.87955347,0.61125502){\color[rgb]{0.57647059,0.15686275,0.20392157}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{GPT-4}\end{tabular}}}}%
+    \put(0.75020968,0.50165013){\color[rgb]{1,1,1}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{Swin-Transformer}\end{tabular}}}}%
+    \put(0.7501635,0.50324892){\color[rgb]{0.57647059,0.15686275,0.20392157}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{Swin-Transformer}\end{tabular}}}}%
+    \put(0.82234256,0.57095857){\color[rgb]{1,1,1}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{DeepSeek-R1}\end{tabular}}}}%
+    \put(0.82229843,0.57095855){\color[rgb]{0.57647059,0.15686275,0.20392157}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{DeepSeek-R1}\end{tabular}}}}%
+    \put(0.84936296,0.59049753){\color[rgb]{1,1,1}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{Qwen3-Max}\end{tabular}}}}%
+    \put(0.84931876,0.59049749){\color[rgb]{0.57647059,0.15686275,0.20392157}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{Qwen3-Max}\end{tabular}}}}%
+    \put(0.00959868,0.05454654){\makebox(0,0)[lt]{\lineheight{1.20000005}\smash{\begin{tabular}[t]{l}\textbf{数据来源}：Epoch AI (2025)\end{tabular}}}}%
+    \put(0.00959868,0.02723671){\makebox(0,0)[lt]{\lineheight{1.20000005}\smash{\begin{tabular}[t]{l}\textbf{注}：本估算数据基于人工智能文献资料，其不确定性最高可达一个数量级。如图所示回归线表明，自2010年以来，在依赖神经网络与海量数据集的深度学\\习方法取得突破性进展的推动下，模型参数量呈现急剧增长态势。\end{tabular}}}}%
+    \put(0.99018801,0.05453294){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}OurWorldinData.org/artificial-intelligence | CC BY\end{tabular}}}}%
+  \end{picture}%
+\endgroup%

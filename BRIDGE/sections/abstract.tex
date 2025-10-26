@@ -1,0 +1,23 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+
+\begin{abstract}
+  Neural Architecture Search (NAS) has emerged as a crucial method for automating the design of deep learning models.
+  Despite its promise, NAS often incurs significant computational and hardware costs.
+  To mitigate these challenges, transferable NAS (TNAS) has been introduced, leveraging prior NAS results to enhance performance on new tasks.
+  However, existing methods largely focus on knowledge transfer within identical neural search spaces, overlooking the potential for cross-domain transferability. 
+  Motivated by this gap, we explore evolutionary TNAS across heterogeneous search spaces by learning common neural representations.
+  In particular, we introduce a novel approach that encodes both operational and topological information of neural architectures into a unified sequence using a simple tokenizer.
+  This sequence is then processed by a variational auto-encoder, with a Transformer-based encoder to capture rich neural representations and a decoder that reconstructs the original sequence.
+  By utilizing these latent representations, we further establish an inter-domain mapping that acts as a bridge, enabling effective explicit solution transfer among diverse search spaces to enhance the evolutionary NAS process.
+  To harness this capability, we develop an evolutionary sequential transfer optimization approach that transfers knowledge during population initialization, providing both flexibility and adaptability.
+  To the best of our knowledge, this work serves as the first attempt in the literature exploring evolutionary TNAS across diverse spaces.
+  Moreover, we demonstrate the utility of our method through comprehensive empirical studies using different architecture spaces, including NAS-Bench-101, NAS-Bench-201, and the DARTS search space.
+  Our results show that the proposed method significantly enhances the adaptability and performance of NAS across varied domains.
+\end{abstract}
+
+\begin{IEEEkeywords}
+  neural architecture search, transfer learning, representation learning
+\end{IEEEkeywords}
+
+\end{document}

@@ -11,3 +11,15 @@ add_cus_dep('glo', 'gls', 0, 'makeglo2gls');
 sub makeglo2gls {
     system("makeindex -s gglo.ist -o \"$_[0].gls\" \"$_[0].glo\"");
 }
+
+$max_repeat = 5;   # 最大循环次数
+$force_mode = 1;   # 等价于命令行 -f
+$allow_continue = 1;
+
+$cleanup_includes_cusdep_generated = 1;
+$postscript_mode = 0;
+
+$cleanup_includes_cusdep_generated = 1;
+
+# 关键部分：即使达到最大次数，也不报错
+$latexmk_exit_code = 0;# 允许的最大重复次数（例如 10）

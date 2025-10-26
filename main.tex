@@ -4,11 +4,11 @@
 %% =======================================================
 \documentclass[
 	type=doctor,
-	bilinguallist=apart, 
+	bilinguallist=apart,
 	printmode=twoside,
 	bilinguallist=off,
 	blindtrail=false,
-	draft=true,
+	draft=false,
 ]{cquthesis}%
 % 可用选项：
 % type=[bachelor|master|doctor],      % 必选，毕业论文类型，以下项目不填时为默认
@@ -24,31 +24,25 @@
 % 这样可以防止main.tex太过臃肿。
 % \usepackage[subpreambles=true]{standalone}
 \usepackage{subfiles}
-
 \usepackage{cquthesis}
 \usepackage{newtxmath}
+\usepackage{bm}
+\usepackage{nicematrix}
+\usepackage{rotating}
 
-% \setCJKfamilyfont{hyxrwsong}[
-% 	UprightFont = {HYXinRenWenSong 55W},
-% 	BoldFont = {HYXinRenWenSong 65W},
-% ]{HYXinRenWenSong}
-% \renewcommand\songti{\CJKfamily{hyxrwsong}\selectfont}
-% \setCJKmainfont[
-% 	UprightFont = {HYXinRenWenSong 55W},
-% 	BoldFont = {HYXinRenWenSong 65W},
-% 	ItalicFont = {HYKaiTiS.ttf},
-% ]{HYXinRenWenSong}
-% \defaultfontfeatures{hyxrwsong}
-\setCJKmainfont{HYXinRenWenSong}[
+\setCJKmainfont{tongti}[
   Path = {/usr/share/fonts/win-fonts/},
-  UprightFont = HYXinRenWenSong55W,
-  BoldFont = HYXinRenWenSong65W,
+  UprightFont = {方正新书宋_GB18030},
+  AutoFakeBold = 3,
+  % BoldFont = HYXinRenWenSong65W,
   ItalicFont = HYKaiTiS,
   Extension = .ttf
 ]
 
 % 定义所有的图片文件在 figures 子目录下
 \graphicspath{{figures/}}
+
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
 
 % 定义数字圆
 % \usepackage{tikz}
@@ -62,15 +56,42 @@
          ] (char) {#1};
 }}
 
-% 自定义章节命令（含 \hspace 控制）
-\newcommand{\mychapter}[1][]{ \chapter[\hspace{0pt}#1]{{\heiti\zihao{3}\hspace{0pt}#1}} }
-\newcommand{\mysection}[1][]{ \section[\hspace{-2pt}#1]{{\heiti\zihao{-3}\hspace{-8#1pt}}} }
-\newcommand{\mysubsection}[1][]{ \subsection[\hspace{-2pt}#1]{{\heiti\zihao{4}\hspace{-8#1pt}}} }
+\providecommand{\mychapter}[2][]{%
+  \if\relax\detokenize{#1}\relax
+    % 如果第一个参数为空，则目录和正文都使用 #2
+    \chapter[\hspace{0pt}#2]{\heiti\zihao{3}\hspace{0pt}#2}%
+  \else
+    % 如果第一个参数非空，则分别使用 #1 和 #2
+    \chapter[\hspace{0pt}#1]{\bfseries\heiti\zihao{3}\hspace{0pt}#2}%
+  \fi
+}
+
+\providecommand{\mysection}[2][]{%
+  \if\relax\detokenize{#1}\relax
+    \section[\hspace{-2pt}#2]{\heiti\zihao{-3}\hspace{-8pt}#2}%
+  \else
+    \section[\hspace{-2pt}#1]{\bfseries\heiti\zihao{-3}\hspace{-8pt}#2}%
+  \fi
+}
+
+\providecommand{\mysubsection}[2][]{%
+  \if\relax\detokenize{#1}\relax
+    \subsection[\hspace{-2pt}#2]{\heiti\zihao{4}\hspace{-8pt}#2}%
+  \else
+    \subsection[\hspace{-2pt}#1]{\bfseries\heiti\zihao{4}\hspace{-8pt}#2}%
+  \fi
+}
+
+\providecommand{\mysubsubsection}[1]{%
+	\refstepcounter{subsubsection}%
+	\par\vspace{0.5em}%
+	\noindent\textbf{（\arabic{subsubsection}）#1}\par\vspace{0.5em}%
+}
 
 \begin{document}
 
 
-\input{contents/cover}
+\input{contents/cover.tex}
 % 封面部分
 \makecover
 
@@ -118,7 +139,7 @@
 % \clearpage
 % \phantomsection
 % \addcontentsline{toc}{chapter}{主要符号对照表}
-% \input{contents/denotation}
+\input{contents/symbols}
 % %% 缩略语对照表，可选
 % \clearpage
 % \phantomsection
@@ -133,7 +154,12 @@
 % 设置小四正文行间距为 20 磅
 \setstretch{1.312}
 
-\subfile{contents/introduction}
+\subfile{contents/1-introduction_cleaned}
+\subfile{contents/2-related-work_cleaned}
+\subfile{contents/3-prompt-distiller_cleaned}
+\subfile{contents/4-bridge-nas_cleaned}
+\subfile{contents/5-kg-mfto-merge_cleaned}
+\subfile{contents/6-conclusion_cleaned}
 
 \backmatter %%% 后置部分(致谢、参考文献、附录等)
 
@@ -142,15 +168,15 @@
 % 注意：至少需要引用一篇参考文献，否则下面两行会引起编译错误。
 % \bibliographystyle{cqunumerical}
 \bibliographystyle{gbt7714-numerical_new}
-\bibliography{ref/refs}
+\bibliography{ref/thesis}
 
 
 %% 附录(按ABC...分节，证明、推导、程序、个人简历等)
 \appendix
-% \include{contents/appendix}
+% \subfile{contents/7-appendix}
 
 
 %% 致谢
-% \include{contents/ack}
+% \subfile{contents/8-ack}
 
 \end{document}

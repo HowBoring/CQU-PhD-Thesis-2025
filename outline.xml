@@ -1,0 +1,356 @@
+<thesis title="基于多层次知识迁移的深度模型高效构建研究"
+  title_en="Efficient Deep Model Construction via Multi-Level Knowledge Transfer"
+  degree="PhD"
+  major="Computer Science and Technology"
+  language="zh-CN">
+
+  <frontmatter>
+    <abstract />
+    <abstract_en />
+    <acknowledgements />
+    <toc />
+    <symbols_and_notations />
+  </frontmatter>
+
+  <!-- 第一章：绪论 -->
+  <chapter id="ch1" title="绪论 (Introduction)">
+    <section id="ch1.1" title="研究背景与意义">
+      <objectives>
+        说明深度模型规模/数据/算力三者耦合上升导致的构建成本压力；提出用多层次知识迁移来提升构建效率的研究命题。
+      </objectives>
+      <points>
+        <point>规模化趋势：参数量、训练时长、显存与能耗上升的“规模—成本曲线”；产业与学术的现实掣肘。</point>
+        <point>传统范式的瓶颈：全量微调/联合训练在黑盒访问、隐私/版权限制、算力预算受限时不可扩展。</point>
+        <point>问题家族化视角：将“高效构建”拆解为三类可转移先验——任务知识（功能/分布）、结构先验（架构/拓扑）、参数先验（权重/合并配方）。</point>
+        <point>研究目标：在不牺牲或尽量少牺牲性能的条件下，显著降低重训练与重搜索的开销。</point>
+      </points>
+      <figs>
+        <fig>F1-1_DeepModel_Cost_Trends：规模、算力、能耗的历史趋势与典型拐点（训练范式变化对照）。</fig>
+      </figs>
+      <refs>
+        <ref>（规模化/能耗/训练成本的权威综述与报告—写作时据学校规范补录）</ref>
+      </refs>
+    </section>
+
+    <section id="ch1.2" title="国内外研究现状">
+      <objectives>分层综述三条路线：知识蒸馏、架构迁移（NAS/TNAS）、参数融合（模型合并），并指出割裂与协同缺失。</objectives>
+      <points>
+        <point>知识蒸馏：从soft target到特征/关系/对比蒸馏；few-shot与prompt结合的动机与挑战（数据稀缺、监督噪声）。</point>
+        <point>架构迁移：可迁移NAS、表示学习+性能预测器、跨空间迁移（异构搜索空间编码、映射稳定性、负迁移）。</point>
+        <point>参数融合：训练自由或弱训练的合并（线性加权、掩码、低秩、配方搜索、自适应合并）；干涉与对齐问题。</point>
+        <point>空白点：跨层信息流稀薄、统一效率度量缺失、评测预算统计不统一、鲁棒性与可复现性不足。</point>
+      </points>
+      <tables>
+        <table>TB1-1_RelatedWork_Map：按层次×是否训练自由×算力预算×鲁棒性指标的代表工作矩阵。</table>
+      </tables>
+      <refs>
+        <ref>（KD/Prompt 学习代表作；蒸馏综述—写作时补录）</ref>
+        <ref>（NAS/ENAS/DARTS/进化NAS/性能预测器/跨域预测与迁移—写作时补录）</ref>
+        <ref>（模型合并：Task Arithmetic/TIES/DARE/AdaMerging/Evolutionary 配方—写作时补录）</ref>
+      </refs>
+    </section>
+
+    <section id="ch1.3" title="研究主线与总体思路">
+      <objectives>确立“知识层→结构层→参数层”的三层递进主线，给出统一迁移优化表述与论文组织。</objectives>
+      <points>
+        <point>三层定义：知识层（蒸馏，功能/分布迁移）→结构层（架构迁移，显式解迁移）→参数层（参数融合，权重空间运算）。</point>
+        <point>统一表述：min 任务损失 + 迁移正则（正则分别实例化为知识/结构/参数先验）；避免“统一范式”过强表述。</point>
+        <point>证据链：三个支撑工作分别在三层提供方法与实证，并在第六章形成弱耦合的信息流闭环。</point>
+      </points>
+      <figs>
+        <fig>F1-2_Overall_Framework：多层次知识迁移框架与信息流（知识→结构→参数，及回流路径）。</fig>
+      </figs>
+      <refs>
+        <ref>（三篇支撑工作在各自章节内与原文严格对齐，见 ch3/ch4/ch5 的 <pdf> 绑定）</ref>
+      </refs>
+    </section>
+  </chapter>
+
+  <!-- 第二章：理论基础 -->
+  <chapter id="ch2" title="多层次知识迁移的理论基础 (Theoretical Foundations)">
+    <section id="ch2.1" title="迁移学习、元学习与迁移优化">
+      <objectives>奠定概念地基：区分对象与手段，澄清“知识层≠参数层”。</objectives>
+      <points>
+        <point>迁移学习：跨任务/分布的表征或决策迁移；元学习：快速适应/初始化；迁移优化：以“重用”加速搜索/训练。</point>
+        <point>多任务优化(MTO)与多形态迁移优化(MFTO)的差异：任务耦合方式、信息共享通道、优化调度策略。</point>
+        <point>边界声明：知识层以功能/表示为研究对象；参数层以参数空间运算与可行域为研究对象（虽都会更新参数，但研究对象不同）。</point>
+      </points>
+      <refs>
+        <ref>（迁移优化/多任务/进化多任务综述—写作时补录）</ref>
+      </refs>
+    </section>
+
+    <section id="ch2.2" title="统一的迁移优化数学表述">
+      <points>
+        <point>一般式：min_{θ_s} L_t(f_{θ_s}, D_t) + λ R(θ_s; 先验)，其中先验可来自教师输出/结构表示/参数合并配方。</point>
+        <point>知识层正则示例：输出/中间特征对齐、对比式间隔；结构层正则：结构相似性/排序一致性；参数层正则：单纯形/符号/稀疏/组稀疏约束。</point>
+        <point>可行域与优化：投影（simplex/box）、拉格朗日、演化策略（CMA-ES）的适用性与噪声鲁棒性。</point>
+      </points>
+      <tables>
+        <table>TB2-1_Transfer_Regularizers：三层常见迁移正则与可行域设计归纳。</table>
+      </tables>
+    </section>
+
+    <section id="ch2.3" title="效率度量与评价指标体系">
+      <points>
+        <point>统一效率记账：训练/搜索GPU·day、评测调用次数、能耗当量、内存峰值、工程复杂度（实现步骤/外部依赖）。</point>
+        <point>统计与置信：多次重试、置信区间、median-of-means；噪声场景的稳健比较协议。</point>
+        <point>基准与复现：数据/任务清单、随机种子、硬件/驱动版本、日志记录（W&B/MLflow等，学校规范中可选）。</point>
+      </points>
+    </section>
+  </chapter>
+
+  <!-- 第三章：知识层迁移（支撑工作一） -->
+  <chapter id="ch3" title="知识层迁移：基于双重对比学习的少样本知识蒸馏 (Prompt-Distiller)">
+    <pdf
+      src="/mnt/data/Prompt-Distiller_Few-Shot_Knowledge_Distillation_for_Prompt-Based_Language_Learners_with_Dual_Contrastive_Learning.pdf"
+      align="strict"
+      notes="方法/符号/实验设置/数据划分/指标/图表编号必须与原文对齐；避免新增超出原文证据的主张；如需扩展实验，须标注为‘论文补充’。" />
+    <section id="ch3.1" title="问题定义与挑战">
+      <points>
+        <point>few-shot条件下的知识迁移：监督稀缺、分布偏移、黑盒约束。</point>
+        <point>prompt-based 学习：提示上下文质量对教师监督稳定性的影响。</point>
+        <point>对比蒸馏动机：通过构造正/负对，增强表示分离度与噪声鲁棒性。</point>
+      </points>
+    </section>
+
+    <section id="ch3.2" title="方法设计：Prompt-Distiller 框架">
+      <points>
+        <point>双教师配置：预训练教师（通用知识）+提示调优教师（任务特化知识）的互补性。</point>
+        <point>双重对比损失：输出层分布对比 + 中间表示对比；温度、边际、样本挖掘与稳定化技巧。</point>
+        <point>训练流程：few-shot采样→教师响应→对比对构造→学生更新；复杂度与内存分析。</point>
+        <point>安全边界：防止教师偏差放大（置信阈/一致性过滤）。</point>
+      </points>
+      <figs>
+        <fig>F3-1_PromptDistiller_Pipeline：数据→双教师→对比蒸馏→学生模型的流程图。</fig>
+        <fig>F3-2_Loss_Illustration：两种对比项与采样策略示意。</fig>
+      </figs>
+    </section>
+
+    <section id="ch3.3" title="实验与结果分析">
+      <points>
+        <point>基准与协议：任务列表、数据划分、评测指标、重复次数；严格复现实验环境与超参。</point>
+        <point>主结果：与标准KD/提示微调/其他few-shot KD对比；统计显著性说明。</point>
+        <point>消融：去双教师、去某一对比项、不同温度/边际、不同few-shot规模。</point>
+        <point>效率：训练步数/耗时/显存占用的对比；性能-效率帕累托前沿分析。</point>
+      </points>
+      <tables>
+        <table>TB3-1_FewShot_Benchmarks：主结果与对比方法。</table>
+        <table>TB3-2_Ablations：损失组件与采样策略消融。</table>
+      </tables>
+      <figs>
+        <fig>F3-3_Sensitivity_Curves：温度/边际/shot数对性能的影响曲线。</fig>
+      </figs>
+    </section>
+
+    <section id="ch3.4" title="小结">
+      <points>
+        <point>知识层迁移的收益与边界；向结构层的启示：基于难例/不确定性的候选结构采样优先级。</point>
+      </points>
+    </section>
+  </chapter>
+
+  <!-- 第四章：结构层迁移（支撑工作二） -->
+  <chapter id="ch4" title="结构层迁移：跨异构搜索空间的进化迁移 NAS (Bridge / ESTO)">
+    <pdf
+      src="/mnt/data/Evolutionary_Transfer_Neural_Architecture_Search_Across_Spaces_via_Representation_Learning.pdf"
+      align="strict"
+      notes="统一编码、Transformer-VAE、跨域线性映射、ESTO与实验设置需与原文一致；图表/变量命名/算法伪码对齐；扩展实验明确标注。" />
+    <section id="ch4.1" title="问题背景与动机">
+      <points>
+        <point>异构搜索空间（NB101/NB201/DARTS）的表示不兼容与“重搜索”代价。</point>
+        <point>结构先验重用：从‘跨域预测’到‘显式解迁移’的必要性与收益预期。</point>
+      </points>
+    </section>
+
+    <section id="ch4.2" title="统一编码与表征学习">
+      <points>
+        <point>Tokenizer：OON/OOE 序列化与拓扑保持；边/算子编码细节与长度控制。</point>
+        <point>Transformer-VAE：重构损失与KL正则；与Ranker（相对性能预测器）的联动训练。</point>
+        <point>表示可信度：重构误差、KTau排序一致性、跨域可泛化性指标。</point>
+      </points>
+      <figs>
+        <fig>F4-1_Tokenizer_Illustration：OON/OOE示意及样例。</fig>
+        <fig>F4-2_VAE_Architecture：编码器/解码器/Ranker结构。</fig>
+      </figs>
+    </section>
+
+    <section id="ch4.3" title="跨域潜空间映射与显式解迁移">
+      <points>
+        <point>线性映射M学习：成对采样、排序一致性目标、正则化与稳定性。</point>
+        <point>解迁移流程：源域精英→潜空间映射→目标域解码→合法性修复。</point>
+        <point>复杂度分析：编码/映射/解码/合法性检查的摊销成本。</point>
+      </points>
+    </section>
+
+    <section id="ch4.4" title="进化顺序迁移优化 (ESTO)">
+      <points>
+        <point>源域解初始化目标域种群，多样性维持与负迁移抑制（精英/随机混合、扰动策略）。</point>
+        <point>与通用求解器（GA/PSO/MA）解耦，Bridge作为“可插拔迁移模块”。</point>
+      </points>
+      <figs>
+        <fig>F4-3_Evolutionary_Transfer_Loop：源→映射→目标初始化→进化→选择的闭环。</fig>
+      </figs>
+    </section>
+
+    <section id="ch4.5" title="实验与结果分析">
+      <points>
+        <point>跨域设置：NB201↔NB101↔DARTS；评测协议与预算；随机种子与复现细节。</point>
+        <point>主结果：搜索收敛速度、最终精度、GPU·day节省、鲁棒性；与无迁移/仅预测跨域的对比。</point>
+        <point>可视化：潜空间MDS/UMAP、进化轨迹、映射前后性能分布。</point>
+        <point>敏感性：映射线性/非线性、映射规模、初始精英比例、多样性参数。</point>
+      </points>
+      <tables>
+        <table>TB4-1_Reconstruction_and_KTau：表示学习与排序一致性指标。</table>
+        <table>TB4-2_CrossDomain_Search_Efficiency：不同求解器+是否迁移的性能/预算。</table>
+      </tables>
+      <figs>
+        <fig>F4-4_Latent_MDS：潜空间演化与聚类图。</fig>
+        <fig>F4-5_Evo_Trajectory：带/不带迁移的进化轨迹对比。</fig>
+      </figs>
+    </section>
+
+    <section id="ch4.6" title="小结">
+      <points>
+        <point>结构层迁移的可泛化性与对参数层的启示：用潜空间聚类/排序一致性筛选待融合子模型或层级。</point>
+      </points>
+    </section>
+  </chapter>
+
+  <!-- 第五章：参数层迁移（支撑工作三） -->
+  <chapter id="ch5" title="参数层迁移：基于知识图谱的多形态迁移优化参数融合 (KG-MFTO)">
+    <pdf src="/mnt/data/KG_MFTO (1).pdf"
+      align="strict"
+      notes="问题刻画、图谱结构、课程规划、双热启动CMA-ES、可行域与评测协议须与原文一致；扩展实验须显式标注。" />
+    <section id="ch5.1" title="问题动机与任务刻画">
+      <points>
+        <point>#models ≫ #tasks 背景下的参数冲突与能力干涉问题；训练自由/弱训练约束。</point>
+        <point>参数层目标：以参数空间运算与搜索为一等公民，避免全量再训练。</point>
+      </points>
+    </section>
+
+    <section id="ch5.2" title="多形态迁移优化(MFTO)视角与系统设计">
+      <points>
+        <point>问题重述：将参数融合表述为MFTO，按“形态(forms)”分解全局目标，分阶段交换知识。</point>
+        <point>知识图谱：模型/任务节点，模型-模型与模型-任务边；协同度/不确定性统计的在线更新。</point>
+        <point>课程规划：UCB式或置信驱动的形态选择；探索-利用权衡与预算分配。</point>
+        <point>可行域建模：合并系数的单纯形/符号/稀疏/分组约束；正则/投影策略。</point>
+      </points>
+      <figs>
+        <fig>F5-1_KG_Schema：异构图结构、统计量与更新流程。</fig>
+        <fig>F5-2_Curriculum_Picker：候选生成与采样函数。</fig>
+      </figs>
+    </section>
+
+    <section id="ch5.3" title="知识引导的演化求解器">
+      <points>
+        <point>双热启动CMA-ES：均值热启动（alpha逆映射或GNN预测）、协方差热启动（协同矩阵→相关→协方差）。</point>
+        <point>噪声鲁棒评测：median-of-means、多次复评；停滞重启与数值稳定策略。</point>
+        <point>复杂度与并行化：候选评测的批次化、缓存/去重机制、硬件亲和性设置。</point>
+      </points>
+      <figs>
+        <fig>F5-3_DualWarmStart：从图谱统计到CMA-ES初始分布的映射示意。</fig>
+      </figs>
+    </section>
+
+    <section id="ch5.4" title="实验与消融">
+      <points>
+        <point>主对比：与Task Arithmetic/TIES/DARE/AdaMerging/进化配方等方法的收敛与质量比较。</point>
+        <point>消融：去图谱、去课程、去双热启动、去可行域约束；模块贡献与协同效应。</point>
+        <point>效率-质量权衡：在固定评测预算下的帕累托分析；不同噪声水平的稳健性。</point>
+      </points>
+      <tables>
+        <table>TB5-1_Merging_Benchmarks：不同任务簇/模型簇的融合结果与预算。</table>
+        <table>TB5-2_Ablations：模块消融与相对跌幅。</table>
+      </tables>
+    </section>
+
+    <section id="ch5.5" title="小结与实践准则">
+      <points>
+        <point>何时选择参数融合优先：数据缺失、黑盒、预算受限、多模型协同。</point>
+        <point>工程建议：可行域选择、评测噪声控制、缓存与再利用、日志与复现。</point>
+      </points>
+    </section>
+  </chapter>
+
+  <!-- 第六章：统一分析与扩展 -->
+  <chapter id="ch6" title="多层次知识迁移的统一分析与扩展 (Unified Analysis and Extensions)">
+    <section id="ch6.1" title="层次间的理论映射与信息流">
+      <points>
+        <point>三层先验的正则映射：知识正则→结构采样先验→参数可行域/初值分布；可交换性与次序依赖讨论。</point>
+        <point>范畴化/图模型草图：对象（模型/结构/任务）与态射（蒸馏/映射/合并）的统一表示。</point>
+      </points>
+      <figs>
+        <fig>F6-1_CrossLevel_Mapping：知识—结构—参数的正则映射与信息通道示意。</fig>
+      </figs>
+    </section>
+
+    <section id="ch6.2" title="跨层协同优化框架">
+      <points>
+        <point>知识→结构：用蒸馏难例/不确定性分布指导结构候选采样与评测预算分配。</point>
+        <point>结构→参数：用潜空间聚类/排序一致性筛选待融合子模型或层级，缩减参数融合的搜索空间。</point>
+        <point>闭环控制：在线更新三层统计量，触发回流与再调度；异常检测与负迁移抑制。</point>
+      </points>
+      <figs>
+        <fig>F6-2_Coordinate_Optimization_Flow：跨层信息回流的统一流程（含触发条件与接口）。</fig>
+      </figs>
+    </section>
+
+    <section id="ch6.3" title="扩展方向">
+      <points>
+        <point>多模态/多智能体与模型-over-模型（MOM）系统：能力复用、动态合成、增量适配。</point>
+        <point>可持续AI与模型经济学：能耗预算、碳足迹、存储/带宽成本纳入优化目标。</point>
+        <point>开放基准与平台化：可复用工具链、公共评测协议与持续集成。</point>
+      </points>
+    </section>
+  </chapter>
+
+  <!-- 第七章：总结与展望 -->
+  <chapter id="ch7" title="总结与展望 (Conclusion and Future Work)">
+    <section id="ch7.1" title="研究总结">
+      <points>
+        <point>回顾三层迁移的系统性证据链：知识→结构→参数，统一效率指标与可复现协议。</point>
+        <point>理论与工程贡献：统一表述、跨层协同、落地实践与潜在影响。</point>
+      </points>
+    </section>
+    <section id="ch7.2" title="展望">
+      <points>
+        <point>下一步：跨层自适应调度、跨域可迁移性理论界定、开放基准与平台化迭代。</point>
+      </points>
+    </section>
+  </chapter>
+
+  <!-- 附录与全局参考指引 -->
+  <appendices>
+    <appendix id="apxA" title="实验配置与超参数表" />
+    <appendix id="apxB" title="公式推导与符号说明" />
+    <appendix id="apxC" title="附加图表与实现细节（包含扩展实验，明确标注‘论文补充’）" />
+  </appendices>
+
+  <global_references_guidance>
+    <bucket id="SupportWork_PDFs" notes="三个支撑工作PDF绑定与对齐要求">
+      <pdf
+        src="/mnt/data/Prompt-Distiller_Few-Shot_Knowledge_Distillation_for_Prompt-Based_Language_Learners_with_Dual_Contrastive_Learning.pdf"
+        align="strict"
+        scope="ch3"
+        must_align="方法/符号/损失定义/实验协议/数据划分/图表编号/结论措辞" />
+      <pdf
+        src="/mnt/data/Evolutionary_Transfer_Neural_Architecture_Search_Across_Spaces_via_Representation_Learning.pdf"
+        align="strict"
+        scope="ch4"
+        must_align="统一编码/Transformer-VAE/Ranker/跨域线性映射/ESTO/评测预算/可视化/算法伪码" />
+      <pdf src="/mnt/data/KG_MFTO (1).pdf"
+        align="strict"
+        scope="ch5"
+        must_align="MFTO重述/知识图/课程规划/可行域/双热启动CMA-ES/鲁棒评测/对比与消融" />
+    </bucket>
+
+    <bucket id="KD_and_PromptLearning" notes="知识层：蒸馏/对比学习/Prompt代表作；写作时补充具体文献条目。" />
+    <bucket id="Evolutionary_NAS"
+      notes="结构层：ENAS/DARTS/Regularized Evolution/性能预测器/arch2vec/跨域迁移等；写作时补充条目。" />
+    <bucket id="Model_Merging"
+      notes="参数层：Task Arithmetic/TIES/DARE/AdaMerging/进化配方/MergeKit等；写作时补充条目。" />
+    <bucket id="Transfer_Optimization" notes="迁移优化/多任务/多形态/进化多任务等综述与理论基础；写作时补充条目。" />
+  </global_references_guidance>
+
+</thesis>

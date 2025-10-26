@@ -1,1116 +1,471 @@
-@inproceedings{MAML,
-  title     = {Model-agnostic meta-learning for fast adaptation of deep networks},
-  author    = {Finn, Chelsea and Abbeel, Pieter and Levine, Sergey},
-  booktitle = {International Conference on Machine Learning},
-  pages     = {1126--1135},
-  year      = {2017}
+@misc{epoch_ai_model_size,
+  author       = {{Epoch AI}},
+  title        = {AI Model Size Trends},
+  year         = {2023},
+  howpublished = {\url{https://epochai.org/}}
 }
 
-@article{ProtoNet,
-  title   = {Prototypical networks for few-shot learning},
-  author  = {Snell, Jake and Swersky, Kevin and Zemel, Richard},
-  journal = {Advances in Neural Information Processing Systems},
-  volume  = {30},
-  year    = {2017}
-}
-
-@inproceedings{RelationNet,
-  title     = {Learning to compare: Relation network for few-shot learning},
-  author    = {Sung, Flood and Yang, Yongxin and Zhang, Li and Xiang, Tao and Torr, Philip HS and Hospedales, Timothy M},
-  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
-  pages     = {1199--1208},
-  year      = {2018}
-}
-
-@inproceedings{TapNet,
-  title     = {Tapnet: Neural network augmented with task-adaptive projection for few-shot learning},
-  author    = {Yoon, Sung Whan and Seo, Jun and Moon, Jaekyun},
-  booktitle = {International Conference on Machine Learning},
-  pages     = {7115--7123},
-  year      = {2019}
-}
-
-@inproceedings{MTL,
-  title     = {Meta-transfer learning for few-shot learning},
-  author    = {Sun, Qianru and Liu, Yaoyao and Chua, Tat-Seng and Schiele, Bernt},
-  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
-  pages     = {403--412},
-  year      = {2019}
-}
-
-@inproceedings{Shot-Free,
-  title     = {Few-shot learning with embedded class models and shot-free meta training},
-  author    = {Ravichandran, Avinash and Bhotika, Rahul and Soatto, Stefano},
-  booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision},
-  pages     = {331--339},
-  year      = {2019}
-}
-
-@inproceedings{DeepEMD,
-  title     = {Deepemd: Few-shot image classification with differentiable earth mover's distance and structured classifiers},
-  author    = {Zhang, Chi and Cai, Yujun and Lin, Guosheng and Shen, Chunhua},
-  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
-  pages     = {12203--12213},
+@inproceedings{gpt3_paper,
+  author    = {Tom B. Brown and others},
+  title     = {Language Models are Few-Shot Learners},
+  booktitle = {Advances in Neural Information Processing Systems 33},
   year      = {2020}
 }
 
-@article{DeepEMDv2,
-  title     = {Deepemd: Differentiable earth mover's distance for few-shot learning},
-  author    = {Zhang, Chi and Cai, Yujun and Lin, Guosheng and Shen, Chunhua},
-  journal   = {IEEE Transactions on Pattern Analysis and Machine Intelligence},
-  year      = {2022},
-  publisher = {IEEE}
-}
-
-@inproceedings{FEAT,
-  title     = {Few-shot learning via embedding adaptation with set-to-set functions},
-  author    = {Ye, Han-Jia and Hu, Hexiang and Zhan, De-Chuan and Sha, Fei},
-  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
-  pages     = {8808--8817},
-  year      = {2020}
-}
-
-@inproceedings{RFS,
-  title     = {Rethinking Few-Shot Image Classification: A Good Embedding is All You Need?},
-  author    = {Tian, Yonglong and Wang, Yue and Krishnan, Dilip and Tenenbaum, Joshua B and Isola, Phillip},
-  booktitle = {European Conference on Computer Vision},
-  pages     = {266--282},
-  year      = {2020}
-}
-
-@inproceedings{AssoAlign,
-  title     = {Associative alignment for few-shot image classification},
-  author    = {Afrasiyabi, Arman and Lalonde, Jean-Fran{\c{c}}ois and Gagn{\'e}, Christian},
-  booktitle = {European Conference on Computer Vision},
-  pages     = {18--35},
-  year      = {2020}
-}
-
-@inproceedings{InfoPatch,
-  title     = {Learning a few-shot embedding model with contrastive learning},
-  author    = {Liu, Chen and Fu, Yanwei and Xu, Chengming and Yang, Siqian and Li, Jilin and Wang, Chengjie and Zhang, Li},
-  booktitle = {Proceedings of the AAAI Conference on Artificial Intelligence},
-  volume    = {35},
-  number    = {10},
-  pages     = {8635--8643},
-  year      = {2021}
-}
-
-@inproceedings{MELR,
-  title     = {Melr: Meta-learning via modeling episode-level relationships for few-shot learning},
-  author    = {Fei, Nanyi and Lu, Zhiwu and Xiang, Tao and Huang, Songfang},
-  booktitle = {International Conference on Learning Representations},
-  year      = {2021}
-}
-
-@inproceedings{IEPT,
-  title     = {IEPT: Instance-level and episode-level pretext tasks for few-shot learning},
-  author    = {Zhang, Manli and Zhang, Jianhong and Lu, Zhiwu and Xiang, Tao and Ding, Mingyu and Huang, Songfang},
-  booktitle = {International Conference on Learning Representations},
-  year      = {2021}
-}
-
-@inproceedings{IER,
-  title     = {Exploring complementary strengths of invariant and equivariant representations for few-shot learning},
-  author    = {Rizve, Mamshad Nayeem and Khan, Salman and Khan, Fahad Shahbaz and Shah, Mubarak},
-  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
-  pages     = {10836--10846},
-  year      = {2021}
-}
-
-@inproceedings{Label-Halluc,
-  title     = {Label hallucination for few-shot classification},
-  author    = {Jian, Yiren and Torresani, Lorenzo},
-  booktitle = {Proceedings of the AAAI Conference on Artificial Intelligence},
-  volume    = {36},
-  number    = {6},
-  pages     = {7005--7014},
-  year      = {2022}
-}
-
-@inproceedings{PAL,
-  title     = {Partner-assisted learning for few-shot image classification},
-  author    = {Ma, Jiawei and Xie, Hanchen and Han, Guangxing and Chang, Shih-Fu and Galstyan, Aram and Abd-Almageed, Wael},
-  booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision},
-  pages     = {10573--10582},
-  year      = {2021}
-}
-
-@inproceedings{TPMN,
-  title     = {Task-aware part mining network for few-shot learning},
-  author    = {Wu, Jiamin and Zhang, Tianzhu and Zhang, Yongdong and Wu, Feng},
-  booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision},
-  pages     = {8433--8442},
-  year      = {2021}
-}
-
-@inproceedings{ConstellationNet,
-  title     = {Attentional constellation nets for few-shot learning},
-  author    = {Xu, Weijian and Xu, Yifan and Wang, Huaijin and Tu, Zhuowen},
-  booktitle = {International Conference on Learning Representations},
-  year      = {2021}
-}
-
-@inproceedings{HGNN,
-  title     = {Hybrid graph neural networks for few-shot learning},
-  author    = {Yu, Tianyuan and He, Sen and Song, Yi-Zhe and Xiang, Tao},
-  booktitle = {Proceedings of the AAAI Conference on Artificial Intelligence},
-  volume    = {36},
-  number    = {3},
-  pages     = {3179--3187},
-  year      = {2022}
-}
-
-@inproceedings{APP2S,
-  title     = {Adaptive poincar{\'e} point to set distance for few-shot classification},
-  author    = {Ma, Rongkai and Fang, Pengfei and Drummond, Tom and Harandi, Mehrtash},
-  booktitle = {Proceedings of the AAAI Conference on Artificial Intelligence},
-  volume    = {36},
-  number    = {2},
-  pages     = {1926--1934},
-  year      = {2022}
-}
-
-@inproceedings{DMN4,
-  title     = {Dmn4: Few-shot learning via discriminative mutual nearest neighbor neural network},
-  author    = {Liu, Yang and Zheng, Tu and Song, Jie and Cai, Deng and He, Xiaofei},
-  booktitle = {Proceedings of the AAAI Conference on Artificial Intelligence},
-  volume    = {36},
-  number    = {2},
-  pages     = {1828--1836},
-  year      = {2022}
-}
-
-@inproceedings{MetaQDA,
-  title     = {Shallow bayesian meta learning for real-world few-shot recognition},
-  author    = {Zhang, Xueting and Meng, Debin and Gouk, Henry and Hospedales, Timothy M},
-  booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision},
-  pages     = {651--660},
-  year      = {2021}
-}
-
-@inproceedings{FewTURE,
-  title     = {Rethinking Generalization in Few-Shot Classification},
-  author    = {Markus Hiller and Rongkai Ma and Mehrtash Harandi and Tom Drummond},
-  booktitle = {Advances in Neural Information Processing Systems},
-  editor    = {Alice H. Oh and Alekh Agarwal and Danielle Belgrave and Kyunghyun Cho},
-  year      = {2022}
-}
-
-@inproceedings{MCL,
-  title     = {Learning to affiliate: Mutual centralized learning for few-shot classification},
-  author    = {Liu, Yang and Zhang, Weifeng and Xiang, Chao and Zheng, Tu and Cai, Deng and He, Xiaofei},
-  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
-  pages     = {14411--14420},
-  year      = {2022}
-}
-
-@inproceedings{ESPT,
-  title     = {ESPT: A Self-Supervised Episodic Spatial Pretext Task for Improving Few-Shot Learning},
-  author    = {Rong, Yi and Lu, Xiongbo and Sun, Zhaoyang and Chen, Yaxiong and Xiong, Shengwu},
-  booktitle = {Proceedings of the AAAI Conference on Artificial Intelligence},
-  year      = {2023}
-}
-
-@article{Meta-HP,
-  title     = {Meta-hallucinating prototype for few-shot learning promotion},
-  author    = {Zhang, Lei and Zhou, Fei and Wei, Wei and Zhang, Yanning},
-  journal   = {Pattern Recognition},
-  volume    = {136},
-  pages     = {109235},
-  year      = {2023},
-  publisher = {Elsevier}
-}
-
-@article{SAPENet,
-  title     = {SAPENet: Self-Attention based Prototype Enhancement Network for Few-shot Learning},
-  author    = {Huang, Xilang and Choi, Seon Han},
-  journal   = {Pattern Recognition},
-  volume    = {135},
-  pages     = {109170},
-  year      = {2023},
-  publisher = {Elsevier}
-}
-
-@article{DFR,
-  title     = {Disentangled feature representation for few-shot image classification},
-  author    = {Cheng, Hao and Wang, Yufei and Li, Haoliang and Kot, Alex C and Wen, Bihan},
-  journal   = {IEEE Transactions on Neural Networks and Learning Systems},
-  year      = {2023},
-  publisher = {IEEE}
-}
-
-@article{STVAE,
-  title     = {Semi-Identical Twins Variational AutoEncoder for Few-Shot Learning},
-  author    = {Zhang, Yi and Huang, Sheng and Peng, Xi and Yang, Dan},
-  journal   = {IEEE Transactions on Neural Networks and Learning Systems},
-  year      = {2023},
-  publisher = {IEEE}
-}
-
-@inproceedings{optimization,
-  title     = {Optimization as a model for few-shot learning},
-  author    = {Ravi, Sachin and Larochelle, Hugo},
-  booktitle = {International Conference on Learning Representations},
-  year      = {2017}
-}
-
-@inproceedings{LEO,
-  title     = {Meta-Learning with Latent Embedding Optimization},
-  author    = {Rusu, Andrei A and Rao, Dushyant and Sygnowski, Jakub and Vinyals, Oriol and Pascanu, Razvan and Osindero, Simon and Hadsell, Raia},
-  booktitle = {International Conference on Learning Representations},
-  year      = {2018}
-}
-
-@article{huang2021local,
-  title     = {Local descriptor-based multi-prototype network for few-shot learning},
-  author    = {Huang, Hongwei and Wu, Zhangkai and Li, Wenbin and Huo, Jing and Gao, Yang},
-  journal   = {Pattern Recognition},
-  volume    = {116},
-  pages     = {107935},
-  year      = {2021},
-  publisher = {Elsevier}
-}
-
-@article{Tadam,
-  title   = {Tadam: Task dependent adaptive metric for improved few-shot learning},
-  author  = {Oreshkin, Boris and Rodr{\'\i}guez L{\'o}pez, Pau and Lacoste, Alexandre},
-  journal = {Advances in Neural Information Processing Systems},
-  volume  = {31},
-  year    = {2018}
-}
-
-@article{pseudo-ensembles,
-  title   = {Learning with pseudo-ensembles},
-  author  = {Bachman, Philip and Alsharif, Ouais and Precup, Doina},
-  journal = {Advances in Neural Information Processing Systems},
-  volume  = {27},
-  year    = {2014}
-}
-
-@article{Temporal-ensembling,
-  title   = {Temporal ensembling for semi-supervised learning},
-  author  = {Laine, Samuli and Aila, Timo},
-  journal = {arXiv preprint arXiv:1610.02242},
-  year    = {2016}
-}
-
-@article{xie2020unsupervised,
-  title   = {Unsupervised data augmentation for consistency training},
-  author  = {Xie, Qizhe and Dai, Zihang and Hovy, Eduard and Luong, Thang and Le, Quoc},
-  journal = {Advances in Neural Information Processing Systems},
-  volume  = {33},
-  pages   = {6256--6268},
-  year    = {2020}
-}
-
-@article{Fixmatch,
-  title   = {Fixmatch: Simplifying semi-supervised learning with consistency and confidence},
-  author  = {Sohn, Kihyuk and Berthelot, David and Carlini, Nicholas and Zhang, Zizhao and Zhang, Han and Raffel, Colin A and Cubuk, Ekin Dogus and Kurakin, Alexey and Li, Chun-Liang},
-  journal = {Advances in Neural Information Processing Systems},
-  volume  = {33},
-  pages   = {596--608},
-  year    = {2020}
-}
-
-@inproceedings{SimCLR,
-  title     = {A simple framework for contrastive learning of visual representations},
-  author    = {Chen, Ting and Kornblith, Simon and Norouzi, Mohammad and Hinton, Geoffrey},
-  booktitle = {International Conference on Machine Learning},
-  pages     = {1597--1607},
-  year      = {2020}
-}
-
-@article{SimCLRv2,
-  title   = {Big self-supervised models are strong semi-supervised learners},
-  author  = {Chen, Ting and Kornblith, Simon and Swersky, Kevin and Norouzi, Mohammad and Hinton, Geoffrey E},
-  journal = {Advances in Neural Information Processing Systems},
-  volume  = {33},
-  pages   = {22243--22255},
-  year    = {2020}
-}
-
-@inproceedings{MoCo,
-  title     = {Momentum contrast for unsupervised visual representation learning},
-  author    = {He, Kaiming and Fan, Haoqi and Wu, Yuxin and Xie, Saining and Girshick, Ross},
-  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
-  pages     = {9729--9738},
-  year      = {2020}
-}
-
-@article{MoCov2,
-  title   = {Improved baselines with momentum contrastive learning},
-  author  = {Chen, Xinlei and Fan, Haoqi and Girshick, Ross and He, Kaiming},
-  journal = {arXiv preprint arXiv:2003.04297},
-  year    = {2020}
-}
-
-@article{SupCon,
-  title   = {Supervised contrastive learning},
-  author  = {Khosla, Prannay and Teterwak, Piotr and Wang, Chen and Sarna, Aaron and Tian, Yonglong and Isola, Phillip and Maschinot, Aaron and Liu, Ce and Krishnan, Dilip},
-  journal = {Advances in Neural Information Processing Systems},
-  volume  = {33},
-  pages   = {18661--18673},
-  year    = {2020}
-}
-
-@inproceedings{dhillon2019baseline,
-  title     = {A Baseline for Few-Shot Image Classification},
-  author    = {Dhillon, Guneet Singh and Chaudhari, Pratik and Ravichandran, Avinash and Soatto, Stefano},
-  booktitle = {International Conference on Learning Representations},
-  year      = {2019}
-}
-
-@inproceedings{chencloser,
-  title     = {A Closer Look at Few-shot Classification},
-  author    = {Chen, Wei-Yu and Liu, Yen-Cheng and Kira, Zsolt and Wang, Yu-Chiang Frank and Huang, Jia-Bin},
-  booktitle = {International Conference on Learning Representations},
-  year      = {2019}
-}
-
-@article{russakovsky2015imagenet,
-  title   = {Imagenet large scale visual recognition challenge},
-  author  = {Russakovsky, Olga and Deng, Jia and Su, Hao and Krause, Jonathan and Satheesh, Sanjeev and Ma, Sean and Huang, Zhiheng and Karpathy, Andrej and Khosla, Aditya and Bernstein, Michael and others},
-  journal = {International Journal of Computer Vision},
-  volume  = {115},
-  pages   = {211--252},
-  year    = {2015}
-}
-
-@inproceedings{he2016deep,
-  title     = {Deep residual learning for image recognition},
-  author    = {He, Kaiming and Zhang, Xiangyu and Ren, Shaoqing and Sun, Jian},
-  booktitle = {Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
-  pages     = {770--778},
-  year      = {2016}
-}
-
-@article{krizhevsky2012imagenet,
-  title   = {Imagenet classification with deep convolutional neural networks},
-  author  = {Krizhevsky, Alex and Sutskever, Ilya and Hinton, Geoffrey E},
-  journal = {Advances in Neural Information Processing Systems},
-  volume  = {25},
-  year    = {2012}
-}
-
-@inproceedings{yolo,
-  title     = {You only look once: Unified, real-time object detection},
-  author    = {Redmon, Joseph and Divvala, Santosh and Girshick, Ross and Farhadi, Ali},
-  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
-  pages     = {779--788},
-  year      = {2016}
-}
-
-@inproceedings{FastRcnn,
-  title     = {Fast r-cnn},
-  author    = {Girshick, Ross},
-  booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision},
-  pages     = {1440--1448},
-  year      = {2015}
-}
-
-@article{FasterRcnn,
-  title   = {Faster r-cnn: Towards real-time object detection with region proposal networks},
-  author  = {Ren, Shaoqing and He, Kaiming and Girshick, Ross and Sun, Jian},
-  journal = {Advances in Neural Information Processing Systems},
-  volume  = {28},
-  year    = {2015}
-}
-
-@article{Deeplab,
-  title     = {Deeplab: Semantic image segmentation with deep convolutional nets, atrous convolution, and fully connected crfs},
-  author    = {Chen, Liang-Chieh and Papandreou, George and Kokkinos, Iasonas and Murphy, Kevin and Yuille, Alan L},
-  journal   = {IEEE Transactions on Pattern Analysis and Machine Intelligence},
-  volume    = {40},
-  number    = {4},
-  pages     = {834--848},
-  year      = {2017},
-  publisher = {IEEE}
-}
-
-@inproceedings{MaskRcnn,
-  title     = {Mask r-cnn},
-  author    = {He, Kaiming and Gkioxari, Georgia and Doll{\'a}r, Piotr and Girshick, Ross},
-  booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision},
-  pages     = {2961--2969},
-  year      = {2017}
-}
-
-@inproceedings{FullyConv,
-  title     = {Fully convolutional networks for semantic segmentation},
-  author    = {Long, Jonathan and Shelhamer, Evan and Darrell, Trevor},
-  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
-  pages     = {3431--3440},
-  year      = {2015}
-}
-
-@inproceedings{RENet,
-  title     = {Relational embedding for few-shot classification},
-  author    = {Kang, Dahyun and Kwon, Heeseung and Min, Juhong and Cho, Minsu},
-  booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision},
-  pages     = {8822--8833},
-  year      = {2021}
-}
-
-@article{vinyals2016matching,
-  title   = {Matching networks for one shot learning},
-  author  = {Vinyals, Oriol and Blundell, Charles and Lillicrap, Timothy and Wierstra, Daan and others},
-  journal = {Advances in Neural Information Processing Systems},
-  volume  = {29},
-  year    = {2016}
-}
-
-@inproceedings{ren2018meta,
-  title     = {Meta-Learning for Semi-Supervised Few-Shot Classification},
-  author    = {Ren, Mengye and Triantafillou, Eleni and Ravi, Sachin and Snell, Jake and Swersky, Kevin and Tenenbaum, Joshua B and Larochelle, Hugo and Zemel, Richard S},
-  booktitle = {International Conference on Learning Representations},
-  year      = {2018}
-}
-
-@inproceedings{deng2009imagenet,
-  title     = {Imagenet: A large-scale hierarchical image database},
-  author    = {Deng, Jia and Dong, Wei and Socher, Richard and Li, Li-Jia and Li, Kai and Fei-Fei, Li},
-  booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision},
-  pages     = {248--255},
-  year      = {2009}
-}
-
-@inproceedings{bertinetto2019meta,
-  title     = {Meta-learning with differentiable closed-form solvers},
-  author    = {Bertinetto, Luca and Henriques, Joao F and Torr, Philip HS and Vedaldi, Andrea},
-  booktitle = {International Conference on Learning Representations},
-  year      = {2019}
-}
-
-@article{wah2011caltech,
-  title     = {The caltech-ucsd birds-200-2011 dataset},
-  author    = {Wah, Catherine and Branson, Steve and Welinder, Peter and Perona, Pietro and Belongie, Serge},
-  year      = {2011},
-  publisher = {California Institute of Technology}
-}
-
-@article{triantafillou2017few,
-  title   = {Few-shot learning through an information retrieval lens},
-  author  = {Triantafillou, Eleni and Zemel, Richard and Urtasun, Raquel},
-  journal = {Advances in Neural Information Processing Systems},
-  volume  = {30},
-  year    = {2017}
-}
-
-@inproceedings{yang2022few,
-  title     = {Few-shot classification with contrastive learning},
-  author    = {Yang, Zhanyuan and Wang, Jinghua and Zhu, Yingying},
-  booktitle = {European Conference on Computer Vision},
-  pages     = {293--309},
-  year      = {2022}
-}
-
-@article{JS1,
-  title     = {A new metric for probability distributions},
-  author    = {Endres, Dominik Maria and Schindelin, Johannes E},
-  journal   = {IEEE Transactions on Information Theory},
-  volume    = {49},
-  number    = {7},
-  pages     = {1858--1860},
-  year      = {2003},
-  publisher = {IEEE}
-}
-
-@inproceedings{JS2,
-  title     = {Jensen-Shannon divergence and Hilbert space embedding},
-  author    = {Fuglede, Bent and Topsoe, Flemming},
-  booktitle = {IEEE International Symposium on Information Theory},
-  pages     = {31},
-  year      = {2004}
-}
-
-@inproceedings{HandCrafted,
-  title     = {Generally Boosting Few-Shot Learning with HandCrafted Features},
-  author    = {Zhang, Yi and Huang, Sheng and Zhou, Fengtao},
-  booktitle = {Proceedings of the 29th ACM International Conference on Multimedia},
-  pages     = {3143--3152},
-  year      = {2021}
-}
-@inproceedings{Spatial,
-  title     = {Spatial Contrastive Learning for Few-Shot Classification},
-  author    = {Ouali, Yassine and Hudelot, C{\'e}line and Tami, Myriam},
-  booktitle = {Joint European Conference on Machine Learning and Knowledge Discovery in Databases},
-  pages     = {671--686},
-  year      = {2021}
-}
-
-@inproceedings{FSLwCL,
-  title     = {Few-shot classification with contrastive learning},
-  author    = {Yang, Zhanyuan and Wang, Jinghua and Zhu, Yingying},
-  booktitle = {European Conference on Computer Vision},
-  pages     = {293--309},
-  year      = {2022}
-}
-
-@inproceedings{SSLforFSL,
-  title     = {Self-supervised learning for few-shot image classification},
-  author    = {Chen, Da and Chen, Yuefeng and Li, Yuhong and Mao, Feng and He, Yuan and Xue, Hui},
-  booktitle = {IEEE International Conference on Acoustics, Speech and Signal Processing},
-  pages     = {1745--1749},
-  year      = {2021}
-}
-
-@inproceedings{Pareto,
-  title     = {Pareto self-supervised training for few-shot learning},
-  author    = {Chen, Zhengyu and Ge, Jixie and Zhan, Heshen and Huang, Siteng and Wang, Donglin},
-  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
-  pages     = {13663--13672},
-  year      = {2021}
-}
-
-@inproceedings{Exemplar,
-  title     = {What Makes Instance Discrimination Good for Transfer Learning?},
-  author    = {Zhao, Nanxuan and Wu, Zhirong and Lau, Rynson WH and Lin, Stephen},
-  booktitle = {International Conference on Learning Representations},
-  year      = {2021}
-}
-
-@inproceedings{DeepBDC,
-  title     = {Joint distribution matters: Deep brownian distance covariance for few-shot classification},
-  author    = {Xie, Jiangtao and Long, Fei and Lv, Jiaming and Wang, Qilong and Li, Peihua},
-  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
-  pages     = {7972--7981},
-  year      = {2022}
-}
-
-@inproceedings{MetaBaseline,
-  title     = {Meta-baseline: Exploring simple meta-learning for few-shot learning},
-  author    = {Chen, Yinbo and Liu, Zhuang and Xu, Huijuan and Darrell, Trevor and Wang, Xiaolong},
-  booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision},
-  pages     = {9062--9071},
-  year      = {2021}
-}
-
-
-@article{DualTriNet,
-  title     = {Multi-level semantic feature augmentation for one-shot learning},
-  author    = {Chen, Zitian and Fu, Yanwei and Zhang, Yinda and Jiang, Yu-Gang and Xue, Xiangyang and Sigal, Leonid},
-  journal   = {IEEE Transactions on Image Processing},
-  volume    = {28},
-  number    = {9},
-  pages     = {4594--4605},
-  year      = {2019},
-  publisher = {IEEE}
-}
-
-@inproceedings{SalNet,
-  title     = {Few-shot learning via saliency-guided hallucination of samples},
-  author    = {Zhang, Hongguang and Zhang, Jing and Koniusz, Piotr},
-  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
-  pages     = {2770--2779},
-  year      = {2019}
-}
-
-@inproceedings{IDeMe-Net,
-  title     = {Image deformation meta-networks for one-shot learning},
-  author    = {Chen, Zitian and Fu, Yanwei and Wang, Yu-Xiong and Ma, Lin and Liu, Wei and Hebert, Martial},
-  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
-  pages     = {8680--8689},
-  year      = {2019}
-}
-
-@inproceedings{AFHN,
-  title     = {Adversarial feature hallucination networks for few-shot learning},
-  author    = {Li, Kai and Zhang, Yulun and Li, Kunpeng and Fu, Yun},
-  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
-  pages     = {13470--13479},
-  year      = {2020}
-}
-
-
-%optimization-based
-@inproceedings{lee2019meta,
-  title     = {Meta-learning with differentiable convex optimization},
-  author    = {Lee, Kwonjoon and Maji, Subhransu and Ravichandran, Avinash and Soatto, Stefano},
-  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
-  pages     = {10657--10665},
-  year      = {2019}
-}
-
-
-%IVC
-@article{guo2023contrastive,
-  title     = {Contrastive learning with semantic consistency constraint},
-  author    = {Guo, Huijie and Shi, Lei},
-  journal   = {Image and Vision Computing},
-  pages     = {104754},
-  year      = {2023},
-  publisher = {Elsevier}
-}
-
-@article{wang2022arco,
-  title     = {ArCo: Attention-reinforced transformer with contrastive learning for image captioning},
-  author    = {Wang, Zhongan and Shi, Shuai and Zhai, Zirong and Wu, Yingna and Yang, Rui},
-  journal   = {Image and Vision Computing},
-  volume    = {128},
-  pages     = {104570},
-  year      = {2022},
-  publisher = {Elsevier}
-}
-
-@article{zhao2023dual,
-  title     = {Dual-level contrastive learning for unsupervised person re-identification},
-  author    = {Zhao, Yu and Shu, Qiaoyuan and Shi, Xi},
-  journal   = {Image and Vision Computing},
-  volume    = {129},
-  pages     = {104607},
-  year      = {2023},
-  publisher = {Elsevier}
-}
-
-@article{zhao2023unsupervised,
-  title     = {Unsupervised person re-identification by dynamic hybrid contrastive learning},
-  author    = {Zhao, Yu and Shu, Qiaoyuan and Shi, Xi and Zhan, Jian},
-  journal   = {Image and Vision Computing},
-  volume    = {137},
-  pages     = {104786},
-  year      = {2023},
-  publisher = {Elsevier}
-}
-
-@article{GIFSL,
-  title     = {GIFSL-grafting based improved few-shot learning},
-  author    = {Mazumder, Pratik and Singh, Pravendra and Namboodiri, Vinay P},
-  journal   = {Image and Vision Computing},
-  volume    = {104},
-  pages     = {104006},
-  year      = {2020},
-  publisher = {Elsevier}
-}
-
-@article{PDA,
-  title     = {PDA: Proxy-based domain adaptation for few-shot image recognition},
-  author    = {Liu, Ge and Zhao, Linglan and Fang, Xiangzhong},
-  journal   = {Image and Vision Computing},
-  volume    = {110},
-  pages     = {104164},
-  year      = {2021},
-  publisher = {Elsevier}
-}
-
-@article{DGAP,
-  title     = {Dual global-aware propagation for few-shot learning},
-  author    = {Cui, Zhiyan and Lu, Na and Wang, Weifeng and Guo, Guangshuai},
-  journal   = {Image and Vision Computing},
-  volume    = {128},
-  pages     = {104574},
-  year      = {2022},
-  publisher = {Elsevier}
-}
-
-@article{WPE,
-  title     = {WPE: Weighted prototype estimation for few-shot learning},
-  author    = {Cao, Jiangzhong and Yao, Zijie and Yu, Lianggeng and Ling, Bingo Wing-Kuen},
-  journal   = {Image and Vision Computing},
-  volume    = {137},
-  pages     = {104757},
-  year      = {2023},
-  publisher = {Elsevier}
-}
-
-@article{zhu2023light,
-  title     = {Light transformer learning embedding for few-shot classification with task-based enhancement},
-  author    = {Zhu, Hegui and Zhao, Rong and Gao, Zhan and Tang, Qingsong and Jiang, Wuming},
-  journal   = {Applied Intelligence},
-  volume    = {53},
-  number    = {7},
-  pages     = {7970--7987},
-  year      = {2023},
-  publisher = {Springer}
-}
-
-@inproceedings{lee2020self,
-  title     = {Self-supervised label augmentation via input transformations},
-  author    = {Lee, Hankook and Hwang, Sung Ju and Shin, Jinwoo},
-  booktitle = {International Conference on Machine Learning},
-  pages     = {5714--5724},
-  year      = {2020}
-}
-
-
-#####################
-@inproceedings{Bi-FRN,
-  title     = {Bi-directional feature reconstruction network for fine-grained few-shot image classification},
-  author    = {Wu, Jijie and Chang, Dongliang and Sain, Aneeshan and Li, Xiaoxu and Ma, Zhanyu and Cao, Jie and Guo, Jun and Song, Yi-Zhe},
-  booktitle = {Proceedings of the AAAI Conference on Artificial Intelligence},
-  volume    = {37},
-  number    = {3},
-  pages     = {2821--2829},
-  year      = {2023}
-}
-
-@article{DiffKendall,
-  title   = {DiffKendall: A Novel Approach for Few-Shot Learning with Differentiable Kendall's Rank Correlation},
-  author  = {Zheng, Kaipeng and Zhang, Huishuai and Huang, Weiran},
-  journal = {Advances in Neural Information Processing Systems},
-  volume  = {36},
-  pages   = {49403--49415},
-  year    = {2023}
-}
-
-@inproceedings{FGFL,
-  author    = {Cheng, Hao and Yang, Siyuan and Zhou, Joey Tianyi and Guo, Lanqing and Wen, Bihan},
-  title     = {Frequency Guidance Matters in Few-Shot Learning},
-  booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision},
-  month     = {October},
-  year      = {2023},
-  pages     = {11814-11824}
-}
-
-@inproceedings{MetaDiff,
-  title     = {MetaDiff: Meta-Learning with Conditional Diffusion for Few-Shot Learning},
-  author    = {Zhang, Baoquan and Luo, Chuyao and Yu, Demin and Lin, Huiwei and Li, Xutao and Ye, Yunming and Zhang, Bowen},
-  booktitle = {Proceedings of the AAAI Conference on Artificial Intelligence},
-  year      = {2024}
-}
-
-@article{AFR,
-  title  = {Boosting Few-Shot Learning via Attentive Feature Regularization},
-  author = {Zhu, Xingyu and Wang, Shuo and Lu, Jinda and Hao, Yanbin and Liu, Haifeng and He, Xiangnan},
+@misc{palm_paper,
+  title         = {PaLM: Scaling Language Modeling with Pathways},
+  author        = {Aakanksha Chowdhery and others},
+  year          = {2022},
+  eprint        = {2204.02311},
+  archiveprefix = {arXiv},
+  primaryclass  = {cs.CL}
+}
+
+@misc{training_cost_analysis,
+  author = {{Various Sources}},
+  title  = {Analysis of Large Model Training Costs},
   year   = {2024}
 }
 
-@inproceedings{KTN,
-  title     = {Few-shot image recognition with knowledge transfer},
-  author    = {Peng, Zhimao and Li, Zechao and Zhang, Junge and Li, Yan and Qi, Guo-Jun and Tang, Jinhui},
-  booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision},
-  pages     = {441--449},
-  year      = {2019}
+@article{hinton2015distilling,
+  title   = {Distilling the knowledge in a neural network},
+  author  = {Hinton, Geoffrey and Vinyals, Oriol and Dean, Jeff},
+  journal = {arXiv preprint arXiv:1503.02531},
+  year    = {2015}
 }
 
-@article{AM3,
-  title   = {Adaptive cross-modal few-shot learning},
-  author  = {Xing, Chen and Rostamzadeh, Negar and Oreshkin, Boris and O Pinheiro, Pedro O},
-  journal = {Advances in Neural Information Processing Systems},
-  volume  = {32},
-  year    = {2019}
-}
-
-@inproceedings{TRAML,
-  title     = {Boosting few-shot learning with adaptive margin loss},
-  author    = {Li, Aoxue and Huang, Weiran and Lan, Xu and Feng, Jiashi and Li, Zhenguo and Wang, Liwei},
-  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
-  pages     = {12576--12584},
-  year      = {2020}
-}
-
-@inproceedings{yan2021aligning,
-  title     = {Aligning visual prototypes with bert embeddings for few-shot learning},
-  author    = {Yan, Kun and Bouraoui, Zied and Wang, Ping and Jameel, Shoaib and Schockaert, Steven},
-  booktitle = {Proceedings of the 2021 International Conference on Multimedia Retrieval},
-  pages     = {367--375},
-  year      = {2021}
-}
-
-@inproceedings{SP-CLIP,
-  title     = {Semantic Prompt for Few-Shot Image Recognition},
-  author    = {Chen, Wentao and Si, Chenyang and Zhang, Zhang and Wang, Liang and Wang, Zilei and Tan, Tieniu},
-  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
-  pages     = {23581--23591},
-  year      = {2023}
-}
-
-@inproceedings{CMGNN-DPGN,
-  title     = {Cross-modality graph neural network for few-shot learning},
-  author    = {Liu, Shubao and Xie, Yuan and Yuan, Wang and Ma, Lizhuang},
-  booktitle = {IEEE International Conference on Multimedia and Expo},
-  pages     = {1--6},
-  year      = {2021}
-}
-
-@article{mikolov2013efficient,
-  title   = {Efficient estimation of word representations in vector space},
-  author  = {Mikolov, Tomas and Chen, Kai and Corrado, Greg and Dean, Jeffrey},
-  journal = {arXiv preprint arXiv:1301.3781},
-  year    = {2013}
-}
-
-@article{Word2Vec,
-  title   = {Distributed representations of words and phrases and their compositionality},
-  author  = {Mikolov, Tomas and Sutskever, Ilya and Chen, Kai and Corrado, Greg S and Dean, Jeff},
-  journal = {Advances in Neural Information Processing Systems},
-  volume  = {26},
-  year    = {2013}
-}
-
-@inproceedings{GloVe,
-  title     = {Glove: Global vectors for word representation},
-  author    = {Pennington, Jeffrey and Socher, Richard and Manning, Christopher D},
-  booktitle = {Proceedings of the 2014 Conference on Empirical Methods in Natural Language Processing},
-  pages     = {1532--1543},
-  year      = {2014}
-}
-
-@inproceedings{Bert,
-  title     = {BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding},
-  author    = {Devlin, Jacob and Chang, Ming-Wei and Lee, Kenton and Toutanova, Kristina},
-  booktitle = {In Proceedings of the 2019 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies},
-  volume    = {1},
-  pages     = {4171–-4186},
-  year      = {2019}
-}
-
-@inproceedings{Clip,
-  title     = {Learning transferable visual models from natural language supervision},
-  author    = {Radford, Alec and Kim, Jong Wook and Hallacy, Chris and Ramesh, Aditya and Goh, Gabriel and Agarwal, Sandhini and Sastry, Girish and Askell, Amanda and Mishkin, Pamela and Clark, Jack and others},
-  booktitle = {International Conference on Machine Learning},
-  pages     = {8748--8763},
-  year      = {2021}
-}
-
-#零样本分类
-@inproceedings{metric1,
-  title     = {Label-embedding for attribute-based classification},
-  author    = {Akata, Zeynep and Perronnin, Florent and Harchaoui, Zaid and Schmid, Cordelia},
-  booktitle = {Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
-  pages     = {819--826},
-  year      = {2013}
-}
-
-@article{metric2,
-  title     = {Zero-shot learning via category-specific visual-semantic mapping and label refinement},
-  author    = {Niu, Li and Cai, Jianfei and Veeraraghavan, Ashok and Zhang, Liqing},
-  journal   = {IEEE Transactions on Image Processing},
-  volume    = {28},
-  number    = {2},
-  pages     = {965--979},
-  year      = {2018},
-  publisher = {IEEE}
-}
-
-@inproceedings{metric3,
-  title     = {Transductive unbiased embedding for zero-shot learning},
-  author    = {Song, Jie and Shen, Chengchao and Yang, Yezhou and Liu, Yang and Song, Mingli},
-  booktitle = {Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
-  pages     = {1024--1033},
-  year      = {2018}
-}
-
-@inproceedings{generative1,
-  title     = {Feature generating networks for zero-shot learning},
-  author    = {Xian, Yongqin and Lorenz, Tobias and Schiele, Bernt and Akata, Zeynep},
-  booktitle = {Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
-  pages     = {5542--5551},
-  year      = {2018}
-}
-
-@inproceedings{generative2,
-  title     = {Leveraging seen and unseen semantic relationships for generative zero-shot learning},
-  author    = {Vyas, Maunil R and Venkateswara, Hemanth and Panchanathan, Sethuraman},
-  booktitle = {European Conference on Computer Vision},
-  pages     = {70--86},
-  year      = {2020}
-}
-
-@inproceedings{generative3,
-  title     = {Boosting generative zero-shot learning by synthesizing diverse features with attribute augmentation},
-  author    = {Zhao, Xiaojie and Shen, Yuming and Wang, Shidong and Zhang, Haofeng},
-  booktitle = {Proceedings of the AAAI Conference on Artificial Intelligence},
-  volume    = {36},
-  number    = {3},
-  pages     = {3454--3462},
-  year      = {2022}
-}
-
-#########
-@article{GAN,
-  title   = {Generative adversarial nets},
-  author  = {Goodfellow, Ian and Pouget-Abadie, Jean and Mirza, Mehdi and Xu, Bing and Warde-Farley, David and Ozair, Sherjil and Courville, Aaron and Bengio, Yoshua},
-  journal = {Advances in Neural Information Processing Systems},
-  volume  = {27},
-  year    = {2014}
-}
-
-@article{diffusion,
-  title   = {Denoising diffusion probabilistic models},
-  author  = {Ho, Jonathan and Jain, Ajay and Abbeel, Pieter},
-  journal = {Advances in Neural Information Processing Systems},
-  volume  = {33},
-  pages   = {6840--6851},
-  year    = {2020}
-}
-
-@inproceedings{SBERT,
-  title     = {Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks},
-  author    = {Reimers, Nils and Gurevych, Iryna},
-  booktitle = {Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing},
-  pages     = {3982--3992},
-  year      = {2019}
-}
-
-@article{RoBERTa,
-  title   = {Roberta: A robustly optimized bert pretraining approach},
-  author  = {Liu, Yinhan and Ott, Myle and Goyal, Naman and Du, Jingfei and Joshi, Mandar and Chen, Danqi and Levy, Omer and Lewis, Mike and Zettlemoyer, Luke and Stoyanov, Veselin},
-  journal = {arXiv preprint arXiv:1907.11692},
-  year    = {2019}
-}
-
-@inproceedings{ALBERT,
-  title     = {ALBERT: A Lite BERT for Self-supervised Learning of Language Representations},
-  author    = {Lan, Zhenzhong and Chen, Mingda and Goodman, Sebastian and Gimpel, Kevin and Sharma, Piyush and Soricut, Radu},
-  booktitle = {International Conference on Learning Representations},
-  year      = {2019}
-}
-
-@article{赵凯琳2020小样本学习研究综述,
-  title   = {小样本学习研究综述},
-  author  = {赵凯琳 and 靳小龙 and 王元卓},
-  journal = {软件学报},
-  volume  = {32},
-  number  = {2},
-  pages   = {349--369},
-  year    = {2020}
-}
-
-@article{刘颖2021基于小样本学习的图像分类技术综述,
-  title     = {基于小样本学习的图像分类技术综述},
-  author    = {刘颖 and 雷研博 and 范九伦 and 王富平 and 公衍超 and 田奇},
-  journal   = {自动化学报},
-  volume    = {47},
-  number    = {2},
-  pages     = {297--315},
-  year      = {2021},
-  publisher = {自动化学报}
-}
-
-@article{小样本困境下的深度学习图像识别综述,
-  author  = { 葛轶洲 and  刘恒 and  王言 and  徐百乐 and  周青 and  申富饶 },
-  title   = {小样本困境下的深度学习图像识别综述},
-  journal = {软件学报},
-  volume  = {33},
-  pages   = {193-210},
-  year    = {2022},
-  issn    = {1000-9825},
-  doi     = {10.13328/j.cnki.jos.006342}
-}
-
-@article{图像分类,
-  title   = {图像物体分类与检测算法综述},
-  author  = {黄凯奇 and 任伟强 and 谭铁牛},
-  journal = {计算机学报},
-  volume  = {37},
-  number  = {6},
-  pages   = {1225--1240},
-  year    = {2014}
-}
-
-@article{陈科圻2020多尺度目标检测的深度学习研究综述,
-  title   = {多尺度目标检测的深度学习研究综述},
-  author  = {陈科圻 and 朱志亮 and 邓小明 and 马翠霞 and 王宏安},
-  journal = {软件学报},
-  volume  = {32},
-  number  = {4},
-  pages   = {1201--1227},
-  year    = {2020}
-}
-
-@article{蒋弘毅2021目标检测模型及其优化方法综述,
-  title     = {目标检测模型及其优化方法综述},
-  author    = {蒋弘毅 and 王永娟 and 康锦煜},
-  journal   = {自动化学报},
-  volume    = {47},
+@article{gou2021knowledge,
+  title     = {Knowledge distillation: A survey},
+  author    = {Gou, Jianping and Yu, Baosheng and Maybank, Stephen J and Tao, Dacheng},
+  journal   = {International Journal of Computer Vision},
+  volume    = {129},
   number    = {6},
-  pages     = {1232--1255},
+  pages     = {1789--1819},
   year      = {2021},
-  publisher = {自动化学报}
+  publisher = {Springer}
 }
 
-@article{语义分割,
-  author  = { 青晨 and  禹晶 and  肖创柏 and  段娟 },
-  title   = {深度卷积神经网络图像语义分割研究进展},
-  journal = {中国图象图形学报},
-  volume  = {25},
-  pages   = {1069-1090},
-  year    = {2020},
-  issn    = {1006-8961}
+@article{tian2019contrastive,
+  title   = {Contrastive representation distillation},
+  author  = {Tian, Yonglong and Krishnan, Dilip and Isola, Phillip},
+  journal = {arXiv preprint arXiv:1910.10699},
+  year    = {2019}
 }
 
-@article{元学习,
-  author  = { 李凡长 and  刘洋 and  吴鹏翔 and  董方 and  蔡奇 and  王哲 },
-  title   = {元学习研究综述},
-  journal = {计算机学报},
-  volume  = {44},
-  pages   = {422-446},
-  year    = {2021},
-  issn    = {0254-4164}
+@article{elsken2019neural,
+  title   = {Neural architecture search: A survey},
+  author  = {Elsken, Thomas and Metzen, Jan Hendrik and Hutter, Frank},
+  journal = {Journal of Machine Learning Research},
+  volume  = {20},
+  year    = {2019}
 }
 
-@article{度量学习,
-  author  = { 刘鑫 and  周凯锐 and  何玉琳 and  景丽萍 and  于剑 },
-  title   = {基于度量的小样本分类方法研究综述},
-  journal = {模式识别与人工智能},
-  volume  = {34},
-  pages   = {909-923},
-  year    = {2021},
-  issn    = {1003-6059},
-  doi     = {10.16451/j.cnki.issn1003-6059.202110004}
+@inproceedings{zoph2018learning,
+  title     = {Learning transferable architectures for scalable image recognition},
+  author    = {Zoph, Barret and Le, Quoc V and others},
+  booktitle = {Proceedings of the IEEE conference on computer vision and pattern recognition},
+  pages     = {8697--8710},
+  year      = {2018}
 }
 
-@article{零样本学习,
-  author  = { 张鲁宁 and  左信 and  刘建伟 },
-  title   = {零样本学习研究进展},
-  journal = {自动化学报},
-  volume  = {46},
-  pages   = {1-23},
-  year    = {2020},
-  issn    = {0254-4156},
-  doi     = {10.16383/j.aas.c180429}
-}
-
-@article{冯耀功2020基于知识的零样本视觉识别综述,
-  title   = {基于知识的零样本视觉识别综述},
-  author  = {冯耀功 and 于剑 and 桑基韬 and 杨朋波},
-  journal = {软件学报},
-  volume  = {32},
-  number  = {2},
-  pages   = {370--405},
-  year    = {2020}
-}
-
-@article{赵鹏2021一种基于融合重构的子空间学习的零样本图像分类方法,
-  title   = {一种基于融合重构的子空间学习的零样本图像分类方法},
-  author  = {赵鹏 and 汪纯燕 and 张思颖 and 刘政怡},
-  journal = {计算机学报},
-  volume  = {44},
-  number  = {2},
-  pages   = {409--421},
+@article{chen2021bridge,
+  title   = {Bridge the gap between domains: Transferable neural architecture search},
+  author  = {Chen, Zixuan and Li, Zecheng and He, Hai-Tao and Li, Yixuan and Wang, Xiaolin},
+  journal = {arXiv preprint arXiv:2104.00939},
   year    = {2021}
 }
 
+@article{wortsman2022model_soup,
+  title         = {Model Soups: Averaging Weights of Multiple Fine-Tuned Models Improves Accuracy without Increasing Inference Time},
+  author        = {Mitchell Wortsman and Gabriel Ilharco and Samir Yitzhak Gadre and Rebecca Roelofs and Raphael Gontijo-Lopes and Ari S. Morcos and Hongseok Namkoong and Ali Farhadi and Yair Carmon and Simon Kornblith and Ludwig Schmidt},
+  year          = {2022},
+  eprint        = {2203.05482},
+  archiveprefix = {arXiv},
+  primaryclass  = {cs.CV}
+}
 
-@inproceedings{SGD,
-  title     = {Stochastic gradient descent with differentially private updates},
-  author    = {Song, Shuang and Chaudhuri, Kamalika and Sarwate, Anand D},
-  booktitle = {2013 IEEE global conference on signal and information processing},
-  pages     = {245--248},
+@article{ilharco2022task_arithmetic,
+  title         = {Editing Models with Task Arithmetic},
+  author        = {Gabriel Ilharco and Marco Tulio Ribeiro and Mitchell Wortsman and Suchin Gururangan and Ludwig Schmidt and Hannaneh Hajishirzi and Ali Farhadi},
+  year          = {2022},
+  eprint        = {2212.04089},
+  archiveprefix = {arXiv},
+  primaryclass  = {cs.CL}
+}
+
+@article{yadav2023ties_merging,
+  title         = {TIES-Merging: Resolving Interference When Merging Models},
+  author        = {Prateek Yadav and Derek Tam and Leshem Choshen and Colin Raffel and Mohit Bansal},
+  year          = {2023},
+  eprint        = {2306.01708},
+  archiveprefix = {arXiv},
+  primaryclass  = {cs.CL}
+}
+
+@article{yu2023dare,
+  title   = {DARE: Disentangling, Aligning, and Fusing Representations for Cross-Domain Recommendation},
+  author  = {Yu, Jian-Huang and Lin, You-Wei and Shou, De-Chuan and Chen, Hsin-Hsi},
+  year    = {2023},
+  journal = {arXiv preprint arXiv:2305.09932}
+}
+
+@inproceedings{prompt_distiller_paper,
+  title     = {Prompt-Distiller: Few-Shot Knowledge Distillation for Prompt-Based Language Learners with Dual Contrastive Learning},
+  author    = {Author 1 and Author 2},
+  booktitle = {Proceedings of a Top Conference},
+  year      = {2023}
+}
+
+@inproceedings{esto_paper,
+  title     = {Evolutionary Transfer Neural Architecture Search Across Spaces via Representation Learning},
+  author    = {Author 3 and Author 4},
+  booktitle = {Proceedings of another Top Conference},
+  year      = {2023}
+}
+
+@inproceedings{kg_mfto_paper,
+  title     = {KG-MFTO: Parameter Fusion for Multi-Form Transfer Optimization via Knowledge Graph},
+  author    = {Author 5 and Author 6},
+  booktitle = {Proceedings of yet another Top Conference},
+  year      = {2023}
+}
+
+@article{DBLP:journals/corr/abs-2003-08271,
+  author  = {Xipeng Qiu and
+             Tianxiang Sun and
+             Yige Xu and
+             Yunfan Shao and
+             Ning Dai and
+             Xuanjing Huang},
+  title   = {Pre-trained Models for Natural Language Processing: {A} Survey},
+  journal = {CoRR},
+  volume  = {abs/2003.08271},
+  year    = {2020}
+}
+@article{DBLP:journals/corr/abs-2106-07139,
+  author  = {Xu Han and
+             Zhengyan Zhang and
+             Ning Ding and
+             Yuxian Gu and
+             Xiao Liu and
+             Yuqi Huo and
+             Jiezhong Qiu and
+             Liang Zhang and
+             Wentao Han and
+             Minlie Huang and
+             Qin Jin and
+             Yanyan Lan and
+             Yang Liu and
+             Zhiyuan Liu and
+             Zhiwu Lu and
+             Xipeng Qiu and
+             Ruihua Song and
+             Jie Tang and
+             Ji{-}Rong Wen and
+             Jinhui Yuan and
+             Wayne Xin Zhao and
+             Jun Zhu},
+  title   = {Pre-Trained Models: Past, Present and Future},
+  journal = {CoRR},
+  volume  = {abs/2106.07139},
+  year    = {2021}
+}
+@article{DBLP:journals/corr/abs-2107-13586,
+  author  = {Pengfei Liu and
+             Weizhe Yuan and
+             Jinlan Fu and
+             Zhengbao Jiang and
+             Hiroaki Hayashi and
+             Graham Neubig},
+  title   = {Pre-train, Prompt, and Predict: {A} Systematic Survey of Prompting
+             Methods in Natural Language Processing},
+  journal = {CoRR},
+  volume  = {abs/2107.13586},
+  year    = {2021}
+}
+@inproceedings{DBLP:conf/eacl/SchickS21,
+  author    = {Timo Schick and
+               Hinrich Sch{\"{u}}tze},
+  title     = {Exploiting Cloze-Questions for Few-Shot Text Classification and Natural
+               Language Inference},
+  booktitle = {EACL},
+  pages     = {255--269},
+  year      = {2021}
+}
+@inproceedings{DBLP:conf/acl/GaoFC20,
+  author    = {Tianyu Gao and
+               Adam Fisch and
+               Danqi Chen},
+  title     = {Making Pre-trained Language Models Better Few-shot Learners},
+  booktitle = {ACL/IJCNLP},
+  pages     = {3816--3830},
+  year      = {2021}
+}
+@article{DBLP:journals/corr/abs-2103-10385,
+  author  = {Xiao Liu and
+             Yanan Zheng and
+             Zhengxiao Du and
+             Ming Ding and
+             Yujie Qian and
+             Zhilin Yang and
+             Jie Tang},
+  title   = {{GPT} Understands, Too},
+  journal = {CoRR},
+  volume  = {abs/2103.10385},
+  year    = {2021}
+}
+@article{DBLP:journals/corr/abs-2109-07684,
+  author  = {Genta Indra Winata and
+             Andrea Madotto and
+             Zhaojiang Lin and
+             Rosanne Liu and
+             Jason Yosinski and
+             Pascale Fung},
+  title   = {Language Models are Few-shot Multilingual Learners},
+  journal = {CoRR},
+  volume  = {abs/2109.07684},
+  year    = {2021}
+}
+@article{DBLP:journals/corr/abs-2109-01652,
+  author  = {Jason Wei and
+             Maarten Bosma and
+             Vincent Y. Zhao and
+             Kelvin Guu and
+             Adams Wei Yu and
+             Brian Lester and
+             Nan Du and
+             Andrew M. Dai and
+             Quoc V. Le},
+  title   = {Finetuned Language Models Are Zero-Shot Learners},
+  journal = {CoRR},
+  volume  = {abs/2109.01652},
+  year    = {2021}
+}
+@article{DBLP:journals/ijcv/GouYMT21,
+  author  = {Jianping Gou and
+             Baosheng Yu and
+             Stephen J. Maybank and
+             Dacheng Tao},
+  title   = {Knowledge Distillation: {A} Survey},
+  journal = {Int. J. Comput. Vis.},
+  volume  = {129},
+  number  = {6},
+  pages   = {1789--1819},
+  year    = {2021}
+}
+@article{DBLP:journals/corr/abs-1903-12136,
+  author  = {Raphael Tang and
+             Yao Lu and
+             Linqing Liu and
+             Lili Mou and
+             Olga Vechtomova and
+             Jimmy Lin},
+  title   = {Distilling Task-Specific Knowledge from {BERT} into Simple Neural
+             Networks},
+  journal = {CoRR},
+  volume  = {abs/1903.12136},
+  year    = {2019}
+}
+@inproceedings{DBLP:conf/emnlp/SunCGL19,
+  author    = {Siqi Sun and
+               Yu Cheng and
+               Zhe Gan and
+               Jingjing Liu},
+  title     = {Patient Knowledge Distillation for {BERT} Model Compression},
+  booktitle = {EMNLP-IJCNLP},
+  pages     = {4322--4331},
+  year      = {2019}
+}
+@inproceedings{DBLP:conf/emnlp/JiaoYSJCL0L20,
+  author    = {Xiaoqi Jiao and
+               Yichun Yin and
+               Lifeng Shang and
+               Xin Jiang and
+               Xiao Chen and
+               Linlin Li and
+               Fang Wang and
+               Qun Liu},
+  title     = {TinyBERT: Distilling {BERT} for Natural Language Understanding},
+  booktitle = {EMNLP (Findings)},
+  pages     = {4163--4174},
+  year      = {2020}
+}
+@article{DBLP:journals/corr/abs-2110-04725,
+  author  = {Shaohua Wu and
+             Xudong Zhao and
+             Tong Yu and
+             Rongguo Zhang and
+             Chong Shen and
+             Hongli Liu and
+             Feng Li and
+             Hong Zhu and
+             Jiangang Luo and
+             Liang Xu and
+             Xuanwei Zhang},
+  title   = {Yuan 1.0: Large-Scale Pre-trained Language Model in Zero-Shot and
+             Few-Shot Learning},
+  journal = {CoRR},
+  volume  = {abs/2110.04725},
+  year    = {2021}
+}
+@inproceedings{DBLP:conf/emnlp/ShinRLWS20,
+  author    = {Taylor Shin and
+               Yasaman Razeghi and
+               Robert L. Logan IV and
+               Eric Wallace and
+               Sameer Singh},
+  title     = {AutoPrompt: Eliciting Knowledge from Language Models with Automatically
+               Generated Prompts},
+  booktitle = {EMNLP},
+  pages     = {4222--4235},
+  year      = {2020}
+}
+@article{DBLP:journals/corr/abs-2110-07602,
+  author  = {Xiao Liu and
+             Kaixuan Ji and
+             Yicheng Fu and
+             Zhengxiao Du and
+             Zhilin Yang and
+             Jie Tang},
+  title   = {P-Tuning v2: Prompt Tuning Can Be Comparable to Fine-tuning Universally
+             Across Scales and Tasks},
+  journal = {CoRR},
+  volume  = {abs/2110.07602},
+  year    = {2021}
+}
+@inproceedings{DBLP:conf/acl/HambardzumyanKM20,
+  author    = {Karen Hambardzumyan and
+               Hrant Khachatrian and
+               Jonathan May},
+  title     = {{WARP:} Word-level Adversarial ReProgramming},
+  booktitle = {ACL/IJCNLP},
+  pages     = {4921--4933},
+  year      = {2021}
+}
+@inproceedings{DBLP:conf/naacl/WilliamsNB18,
+  author    = {Adina Williams and
+               Nikita Nangia and
+               Samuel R. Bowman},
+  title     = {A Broad-Coverage Challenge Corpus for Sentence Understanding through
+               Inference},
+  booktitle = {NAACL-HLT},
+  pages     = {1112--1122},
+  year      = {2018}
+}
+@inproceedings{DBLP:conf/emnlp/BowmanAPM15,
+  author    = {Samuel R. Bowman and
+               Gabor Angeli and
+               Christopher Potts and
+               Christopher D. Manning},
+  title     = {A large annotated corpus for learning natural language inference},
+  booktitle = {EMNLP},
+  pages     = {632--642},
+  year      = {2015}
+}
+@inproceedings{DBLP:conf/semeval/DzikovskaNBLGBC13,
+  author    = {Myroslava O. Dzikovska and
+               Rodney D. Nielsen and
+               Chris Brew and
+               Claudia Leacock and
+               Danilo Giampiccolo and
+               Luisa Bentivogli and
+               Peter Clark and
+               Ido Dagan and
+               Hoa Trang Dang},
+  title     = {SemEval-2013 Task 7: The Joint Student Response Analysis and 8th Recognizing
+               Textual Entailment Challenge},
+  booktitle = {SemEval@NAACL-HLT},
+  pages     = {263--274},
   year      = {2013}
 }
-
-@article{kingma2014adam,
-  title   = {Adam: A method for stochastic optimization},
-  author  = {Kingma, Diederik P and Ba, Jimmy},
-  journal = {arXiv preprint arXiv:1412.6980},
-  year    = {2014}
+@inproceedings{DBLP:conf/naacl/DengW15,
+  author    = {Lingjia Deng and
+               Janyce Wiebe},
+  title     = {{MPQA} 3.0: An Entity/Event-Level Sentiment Corpus},
+  booktitle = {NAACL-HLT},
+  pages     = {1323--1328},
+  year      = {2015}
 }
-
-
-@inproceedings{cui2021parameterless,
-  title     = {Parameterless transductive feature re-representation for few-shot learning},
-  author    = {Cui, Wentao and Guo, Yuhong},
-  booktitle = {International Conference on Machine Learning},
-  pages     = {2212--2221},
+@inproceedings{DBLP:conf/emnlp/SocherPWCMNP13,
+  author    = {Richard Socher and
+               Alex Perelygin and
+               Jean Wu and
+               Jason Chuang and
+               Christopher D. Manning and
+               Andrew Y. Ng and
+               Christopher Potts},
+  title     = {Recursive Deep Models for Semantic Compositionality Over a Sentiment
+               Treebank},
+  booktitle = {EMNLP},
+  pages     = {1631--1642},
+  year      = {2013}
+}
+@inproceedings{DBLP:conf/acl/PangL05,
+  author    = {Bo Pang and
+               Lillian Lee},
+  title     = {Seeing Stars: Exploiting Class Relationships for Sentiment Categorization
+               with Respect to Rating Scales},
+  booktitle = {ACL},
+  pages     = {115--124},
+  year      = {2005}
+}
+@article{DBLP:journals/nle/LiR06,
+  author  = {Xin Li and
+             Dan Roth},
+  title   = {Learning question classifiers: the role of semantic information},
+  journal = {Nat. Lang. Eng.},
+  volume  = {12},
+  number  = {3},
+  pages   = {229--249},
+  year    = {2006}
+}
+@article{DBLP:journals/corr/abs-1907-11692,
+  author  = {Yinhan Liu and
+             Myle Ott and
+             Naman Goyal and
+             Jingfei Du and
+             Mandar Joshi and
+             Danqi Chen and
+             Omer Levy and
+             Mike Lewis and
+             Luke Zettlemoyer and
+             Veselin Stoyanov},
+  title   = {RoBERTa: {A} Robustly Optimized {BERT} Pretraining Approach},
+  journal = {CoRR},
+  volume  = {abs/1907.11692},
+  year    = {2019}
+}
+@article{DBLP:journals/corr/abs-1807-03748,
+  author  = {A{\"{a}}ron van den Oord and
+             Yazhe Li and
+             Oriol Vinyals},
+  title   = {Representation Learning with Contrastive Predictive Coding},
+  journal = {CoRR},
+  volume  = {abs/1807.03748},
+  year    = {2018}
+}
+@inproceedings{DBLP:conf/aaai/FuZYTLLL21,
+  author    = {Hao Fu and
+               Shaojun Zhou and
+               Qihong Yang and
+               Junjie Tang and
+               Guiquan Liu and
+               Kaikui Liu and
+               Xiaolong Li},
+  title     = {{LRC-BERT:} Latent-representation Contrastive Knowledge Distillation
+               for Natural Language Understanding},
+  booktitle = {AAAI},
+  pages     = {12830--12838},
   year      = {2021}
 }
-
-@inproceedings{qi2021transductive,
-  title     = {Transductive few-shot classification on the oblique manifold},
-  author    = {Qi, Guodong and Yu, Huimin and Lu, Zhaohui and Li, Shuzhao},
-  booktitle = {Proceedings of the IEEE/CVF international conference on computer vision},
-  pages     = {8412--8422},
-  year      = {2021}
+@article{DBLP:journals/corr/abs-1908-08962,
+  author  = {Iulia Turc and
+             Ming{-}Wei Chang and
+             Kenton Lee and
+             Kristina Toutanova},
+  title   = {Well-Read Students Learn Better: The Impact of Student Initialization
+             on Knowledge Distillation},
+  journal = {CoRR},
+  volume  = {abs/1908.08962},
+  year    = {2019}
 }

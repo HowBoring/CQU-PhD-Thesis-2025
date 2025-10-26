@@ -1,0 +1,142 @@
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{\subfix{../figures}}}
+
+\begin{document}
+
+\section{Introduction}
+
+\IEEEPARstart{D}{eep} learning has shown success in various fields~\cite{DBLP:conf/cvpr/HeZRS16,DBLP:conf/cvpr/RedmonDGF16,DBLP:conf/acl/FosterVUMKFJSWB18}.
+However, developing effective deep neural networks (DNNs) remains a challenging and time-intensive process, necessitating substantial domain expertise and experimental validation.
+This challenge has spurred the development of Neural Architecture Search (NAS), a technique that automates the discovery of optimal DNN architectures tailored to specific tasks and datasets.
+
+Traditionally, the design of DNNs relied heavily on manual tuning and expert intuition, which are both resource-intensive and potentially biased towards the designer's experience.
+NAS introduces a systematic, data-driven approach that significantly reduces human labor and subjectivity in the architectural design process~\cite{DBLP:conf/iclr/ZophL17,DBLP:conf/cvpr/ZophVSL18}.
+However, this automation comes with its own set of challenges, primarily the high computational cost~\cite{pham_efficient_2018}.  Evaluating numerous architectures to determine the most effective one for a particular task demands substantial computational resources, which can be a limiting factor in research and practical applications.
+Consequently, a considerable amount of works~\cite{pham_efficient_2018,DBLP:conf/iclr/LiuSY19,DBLP:journals/tnn/DongHFTTO23,DBLP:conf/iclr/BakerGRN18,DBLP:conf/iconip/HouDFQ21} have been dedicated to finding efficient methods for rapidly searching of high-performing neural architectures in specific problem scenarios.
+
+
+Transferable NAS~(TNAS) has emerged as a promising strategy for alleviating the substantial resource requirements of NAS\@.
+By leveraging architectural patterns discovered in one domain and applying them to related tasks, TNAS can streamline the optimization process of neural architectures~\cite{DBLP:journals/pami/LuSGBDB21}.
+This efficiency is achieved by introducing bias into the search process, informed by insights gained from previously solved NAS tasks.
+Evolutionary TNAS further enhances this concept by employing evolutionary algorithms to introduce flexibility and mitigate negative transfer, resulting in notable advancement~\cite{DBLP:conf/cvpr/LiaoJD23,DBLP:journals/tec/ZhouWFLWT24}.
+However, the effectiveness of evolutionary TNAS is limited by the consistency of the search space.
+This constraint reduces the flexibility of evolutionary TNAS, as the search space often needs to be tailored to the specific requirements of neural architecture design.
+Transferring neural architecture knowledge across domains poses significant challenges for existing methods, since search spaces can vary considerably in size, complexity, and heterogeneity.
+For instance, some search spaces may only allow variations in the number and type of layers~\cite{DBLP:journals/tnn/SunXZY20}, while others may allow more fine-grained modifications in the connectivity and operations of each layer~\cite{DBLP:conf/cvpr/ZophVSL18,DBLP:conf/iclr/LiuSY19,DBLP:journals/tnn/DongHFTTO23}.
+As a result, the knowledge gained from searching in one space may not be easily transferred to another, especially when the spaces are heterogeneous, i.e., have different structural and operatoral characteristics.
+This limitation hinders the efficiency and effectiveness of evolutionary TNAS, as each new search space necessitates the re-initiation of the search process, rendering previous NAS knowledge and insights obsolete.
+
+Addressing the issue of cross-domain transferability in NAS is critical for overcoming these obstacles while the potential for transferring NAS solutions across diverse and heterogeneous search spaces remains largely unexplored and underutilized.
+One notable effort is \textit{Cross-Domain Predictor}~(CDP)~\cite{DBLP:conf/nips/0002TLW022}, which leverages a domain adaptation approach to construct a neural performance predictor across different search spaces. However, CDP falls short in enabling direct knowledge transfer during the search process and is constrained by the requirement for similarity between search spaces.
+
+
+
+In this paper, we introduce \OUR{} (\UB{B}uilding \UB{R}epresentation for \UB{I}nter-\UB{D}omain Hetero\UB{g}eneous \UB{E}volutionary TNAS), a novel approach that leverages neural representation learning to facilitate cross-domain knowledge transfer in evolutionary NAS\@. The core ingredients of \OUR{} contains a neural representation learning framework designed to construct a latent space that encodes comprehensive neural architecture information. This representation is further enriched with architecture-specific performance metrics, enabling the establishment of effective cross-domain mappings for solution transfer.
+To achieve this, we design a representation learner based on a variational auto-encoder (VAE), incorporating a Transformer-based encoder to encode architectural sequences into a latent representation space.
+By leveraging these latent representations, \OUR{} learns an inter-domain mapping, effectively bridging the gap between heterogeneous search spaces and facilitating explicit solution transfer. This method enables efficient utilization of insights gathered from diverse neural architecture spaces, thereby improving both the efficiency and efficacy of new NAS endeavors.
+Another key components in the proposed \OUR{} is an Evolutionary Sequential Transfer Optimization (ESTO)~\cite{DBLP:journals/cim/TanFJ21,DBLP:journals/tec/XueYHZCST22,10342789} search algorithm which enables a transferable neural architecture search process across spaces using the learned inter-domain mapping. This approach not only expands the applicability of NAS but also harnesses cumulative knowledge from multiple search spaces, streamlining the architectural search process and reducing computational overhead.
+Empirical evaluations conducted across search spaces of varying scales and complexities demonstrate that \OUR{} significantly outperforms baseline methods lacking solution transfer mechanisms.
+These results confirm the effectiveness of the proposed \OUR{} in enhancing NAS outcomes, underscoring the potential of our approach to advance the field of NAS\@.
+The main contributions of this paper can be summarized as:
+\begin{itemize}
+	\item To the best of our knowledge, this work presents the first explicit solution transfer approach for evolutionary TNAS across diverse heterogeneous domains, addressing a critical gap in the field.
+
+	\item We propose a neural representation learning method for cross-domain TNAS that effectively establishes effective mappings between domains.
+	      Our approach leverages a novel representation learning model based on the integration of Transformer and VAE architectures.
+	      This model efficiently extracts salient features of neural architectures and constructs smooth latent space representations.
+	      Furthermore, we incorporate architecture performance metrics to enrich these representations, thereby optimizing the latent space distribution.
+	      This optimization supports TNAS with performance-driven search objectives.
+	      % Comprehensive ablation studies demonstrate that our proposed method achieves competitive performance across multiple representation learning metrics, underscoring the efficacy of our approach.
+
+	\item We propose an ESTO approach for cross-domain evolutionary TNAS\@.
+	      This approach incorporates a unified cross-domain encoding strategy and corresponding evolutionary operators.
+	      Coupled with the cross-domain transfer capabilities achieved through our representation learning approach, this approach effectively leverages existing NAS solutions from diverse search spaces.
+	      Empirical evaluations demonstrate that our proposed cross-domain evolutionary TNAS approach achieves significant performance improvements across multiple search space scales.
+\end{itemize}
+
+
+The rest of this paper is structured as follows:
+Section~\ref{sec:preliminary} provides essential background information and reviews related work.
+Section~\ref{sec:method} presents the theoretical foundations and technical details of our proposed approach, \ie, \OUR{}.
+Section~\ref{sec:experiment} details the experimental setup and provides a comprehensive analysis of our findings.
+Finally, Section~\ref{sec:conclusion} summarizes the contributions of this work and discusses potential future directions.
+
+\section{Preliminary}\label{sec:preliminary}
+
+This section presents essential background on NAS and reviews recent advancements in two related areas critical to our work: knowledge transfer in NAS and representation learning for neural architectures. These topics provide the foundational context for our proposed approach and situate our contributions within the current landscape of NAS research.
+
+\subsection{Neural Architecture Search}
+
+Neural Architecture Search (NAS) has evolved as a pivotal technique for automating the design of deep learning models.
+It systematically identifies optimal architectures tailored to specific tasks, thus mitigating the reliance on expert intuition and manual tuning.
+Formally, NAS can be formulated as a bilevel optimization problem.
+Let \( \mathcal{A} \) represent the search space of neural architectures and \( \mathcal{W} \) denote the space of weights associated with a specific architecture.
+The objective of NAS is to find an optimal architecture \( a^* \in \mathcal{A} \) that minimizes a validation loss \( \mathcal{L}_\mathrm{val} \), which depends on the architecture \( a \) and its corresponding optimal weights \( w^*(a) \):
+\begin{equation}
+	\begin{aligned}
+		a^*    & = \arg\min_{\mathclap{a \in \mathcal{A}}} \: \mathcal{L}_\mathrm{val}(w^*(a), a) \\
+		w^*(a) & = \arg\min_{\mathclap{w \in \mathcal{W}}} \: \mathcal{L}_\mathrm{train}(w, a)
+	\end{aligned}
+\end{equation}
+where the optimal weights \( w^*(a) \) for a given architecture \( a \) are often obtained by minimizing the training loss \( \mathcal{L}_\mathrm{train} \).
+
+NAS frameworks evaluate myriad architectural configurations to determine the most effective designs, which traditionally entails a high computational cost and extensive resource allocation.
+Early approaches, such as Reinforcement Learning (RL)~\cite{DBLP:conf/iclr/ZophL17,DBLP:conf/cvpr/ZophVSL18,Gao2019GraphNASGN,Lyu2021MultiobjectiveRL,Hsu2018MONASMN} and Evolutionary Algorithms (EA)~\cite{Liu2020ASO,DBLP:conf/aaai/RealAHL19,DBLP:journals/tec/ZhouQGT21,DBLP:conf/iconip/HouDFQ21,DBLP:journals/tnn/DongHFTTO23}, demonstrated the feasibility of automating architecture search but were often criticized for their resource-intensive nature.
+Subsequently, techniques such as parameter sharing, one-shot models, and weight inheritance emerged to reduce the computational overhead by reusing model weights across different architecture evaluations.
+More recent advancements, such as DARTS~\cite{DBLP:conf/iclr/LiuSY19} and NAO~\cite{DBLP:conf/nips/LuoTQCL18}, have leveraged gradient-based optimization and latent space representations to further reduce computational overhead, making NAS more practical for large-scale applications.
+
+Despite these advances, the computational cost of NAS remains a significant obstacle. Researchers have explored numerous efficiency-boosting techniques, including the use of surrogate models to predict the performance of candidate architectures, thereby minimizing the need for exhaustive evaluations.
+
+
+\subsection{Knowledge Transfer in NAS}
+
+To address the computational challenges inherent in NAS, researchers have increasingly investigated knowledge transfer mechanisms as a means to expedite the architecture search process while maintaining solution quality.
+Initial efforts focused on intra-task knowledge transfer using techniques like supernets, which encapsulate all candidate architectures as subgraphs and share parameters across them~\cite{DBLP:conf/cvpr/ZophVSL18,pham_efficient_2018,Huang2023SplitLevelEN}.
+By leveraging parameter sharing, NAS can evaluate architectures with minimal training, thereby expediting the search process.
+
+As research progressed, the focus expanded to more complex transfer goals, such as transferring between different tasks and search spaces~\cite{DBLP:conf/cvpr/ZophVSL18}.
+One direction of research is to transfer knowledge between different tasks while using the same search space.
+A straightforward approach involves transferring the solution obtained from NAS on a source task to a more complex target task~\cite{DBLP:conf/cvpr/ZophVSL18,DBLP:conf/iclr/LiuSY19}.
+However, this direct architecture transfer method requires a high degree of similarity between the source and target tasks, limiting its broad applicability.
+For tasks with significant domain shifts, directly reusing architectures may lead to suboptimal performance~\cite{DBLP:conf/iclr/LiuSY19}.
+To address this issue, some work has focused on measuring and leveraging the correlation between tasks to guide transfer learning.
+Arch-Graph~\cite{DBLP:conf/cvpr/HuangHLCXLL22} proposed a method that predicts task-specific optimal architectures concerning given task embeddings.
+EMT-NAS~\cite{DBLP:conf/cvpr/LiaoJD23} facilitates implicit knowledge transfer across task populations by using evolutionary individual reproduction, while MTNAS~\cite{DBLP:journals/tec/ZhouWFLWT24} extends this concept by developing a evolutionary multi-task framework for NAS\@.
+
+While previous research has made significant strides in knowledge transfer for NAS, the reliance on fixed search spaces has constrained its applicability across diverse scenarios.
+The heterogeneity of real-world tasks and computational environments necessitates varying search spaces, each corresponding to different resource constraints and optimization objectives.
+Consequently, there is a pressing need to develop cross-domain transfer capabilities for NAS, enabling the leveraging of knowledge across distinct architectural search spaces and application contexts.
+The cross-domain transferability would not only enhance the flexibility and generalizability of NAS methods but also potentially improve search efficiency by capitalizing on knowledge gained from disparate domains.
+It necessitates mapping the knowledge acquired from one search space to another, potentially with distinct operations or network topologies.
+To address this challenge, some studies have developed methods to transfer knowledge by aligning the search spaces.
+For instance, CDP~\cite{DBLP:conf/nips/0002TLW022} indirectly facilitates knowledge transfer between different search spaces by employing domain adaptation, which brings the distribution between different search spaces closer together in the representation, thereby training a cross-domain neural architecture performance predictor.
+\textit{A General-Purpose Transferable Predictor for NAS}~\cite{DBLP:conf/sdm/HanMCRSZ0JN23} also tried to transfer the predictor by representing any given candidate convolutional neural network with a computation graph that consists of primitive operators.
+
+However, to the best of our knowledge, there is currently a lack of comprehensive research focused on the explicit transfer of solutions across domains in NAS, which would facilitate the exploration of diverse search spaces, enabling efficient neural architecture designing tailored to various computing resource constraints and deployment scenarios. \DiffAdd{Our work advances beyond traditional TNAS methods by building bridges for explicit solution transfer across domains by learning representations of neural architectures and integrating population-based search strategies, enabling more flexible, scalable, and effective transfers.}
+
+\subsection{Representation Learning of Neural Architectures}
+
+To improve the efficiency of NAS, numerous studies have concentrated on representation learning to model neural architectures, thereby constructing a latent representation space that captures their essential characteristics.
+Performance predictors have been developed to operate within this latent space, allowing for efficient estimation of the quality of neural architectures.
+Early predictors utilize models such as LSTM~\cite{DBLP:journals/corr/abs-1712-03351,DBLP:conf/eccv/LiuZNSHLFYHM18,DBLP:conf/nips/LuoTQCL18}, MLP~\cite{DBLP:conf/cvpr/Xu00TJX021,DBLP:conf/aaai/WhiteNS21} and Random Forest~\cite{DBLP:journals/tec/SunWXJYZ20} to accelerate the evaluating of architecture.
+More recently, there has been a focus on utilizing GCNs~\cite{DBLP:conf/cvpr/ChenGCLZWT21,DBLP:conf/aaai/LiGZ20,DBLP:conf/nips/ShiPXLKZ20,DBLP:conf/eccv/WenLCLBK20,DBLP:conf/ijcnn/LukasikFZHK21} to model the graph-formatted data (\eg{} adjacency matrix and node features) of architectures.
+The Neural Predictor~\cite{DBLP:conf/eccv/WenLCLBK20} encodes each node in the architecture by calculating the mean of two modified GCN layers, which use the adjacency matrix and the transpose of the adjacency matrix to propagate information, respectively.
+The Transformer~\cite{DBLP:conf/nips/VaswaniSPUJGKP17} also serves as a neural architecture representation learner and has found widespread application in numerous recent works~\cite{DBLP:conf/mm/Guo0HLXY022,DBLP:conf/cvpr/YiZH0023}.
+The self-attention mechanism in Transformers is particularly advantageous for modeling intricate dependencies and interactions between different architectural components, such as topologies and operators.
+NAR-Former~\cite{DBLP:conf/cvpr/YiZH0023} encodes both operational and topological information of a neural network into a single sequence, leveraging the Transformer to generate a concise vector representation that facilitates the prediction of key metrics, such as latency and accuracy, for both individual cell architectures and complete neural networks.
+The findings of these studies further demonstrate that neural architectures can be effectively clustered within the representation space according to their performance.
+
+Additionally, recent research efforts, such as those by NAO, etc.~\cite{DBLP:conf/nips/LuoTQCL18,DBLP:conf/nips/YanZAZ020,DBLP:conf/ijcnn/LukasikFZHK21} have shown the feasibility of conducting searches within the space of representations.
+They rapidly search through continuous optimization methods like Bayesian Optimization~(BO) and Gradient Descent~(GD) by constructing a continuous representation space.
+Specifically, these continuous representations allow for smoother navigation of the architecture space~\cite{DBLP:conf/ijcnn/LukasikFZHK21}, enabling more efficient exploration and optimization of neural network designs.
+
+The success of both performance predictor-based methods and continuous search approaches highlights the potential for establishing transfer mappings between distinct domains using representation learning. By leveraging the distributional characteristics of these continuous spaces, we hypothesize that meaningful connections can be formed across different architecture search spaces, even when their original formulations vary significantly.
+In this study, we introduce a novel approach whereby neural architecture representations serve as a conduit for cross-domain TNAS, enabling the exploitation of knowledge derived from disparate search spaces.
+
+
+\ifSubfilesClassLoaded{
+	\bibliographystyle{IEEEtran}
+	\bibliography{IEEEabrv,\subfix{../references.bib}}}
+
+\end{document}
