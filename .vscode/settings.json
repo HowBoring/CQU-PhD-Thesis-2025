@@ -2,8 +2,9 @@
     "makefile.configureOnOpen": false,
     "latex-workshop.latex.build.rootfileInStatus": true,
     "latex-workshop.latex.clean.subfolder.enabled": true,
-    "latex-workshop.latex.autoClean.run": "onBuilt",
     "latex-workshop.latex.outDir": "%DIR%/build",
     "latex-workshop.formatting.latexindent.path": "/usr/bin/latexindent",
-    "editor.fontFamily": "'Maple Mono NF CN', Consolas, 'Courier New', monospace"
+    "editor.fontFamily": "'Maple Mono NF CN', Consolas, 'Courier New', monospace",
+    "latex-workshop.latex.rootFile.doNotPrompt": true,
+    "latex-workshop.latex.rootFile.useSubFile": false
 }
