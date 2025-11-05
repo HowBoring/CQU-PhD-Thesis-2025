@@ -1,3 +1,71 @@
-\chapter*{主要符号对照表}
-\addcontentsline{toc}{chapter}{主要符号对照表}
 
+% \renewcommand{\arraystretch}{1.2}
+\fancyhead[R]{\small\songti 主要符号对照表}
+\thispagestyle{fancy}
+\begin{xltabular}{\textwidth}{>{\raggedright\arraybackslash}p{0.2\textwidth} >{\raggedright\arraybackslash}p{0.28\textwidth} X}
+	% \toprule
+	\textbf{符号}                                                                           & \textbf{名称}   & \textbf{解释}                                                \\
+	% \midrule
+	\endfirsthead
+
+	% \toprule
+	\endhead
+
+	% \bottomrule
+	\endfoot
+
+	\endlastfoot
+
+	$\mathcal{T}$                                                                         & 任务            & 从分布 $p(\mathcal{T})$ 中采样的任务                       \\
+	$p(\mathcal{T})$                                                                      & 任务分布          & 任务的先验分布                \\
+	$\mathcal{S}$, $\mathcal{Q}$                                                          & 支持集/查询集       & 少样本任务的训练支持集与用于评估的查询集                                      \\
+	$\mathcal{Y}^q$                                                                       & 查询集标签         & 查询集 $\mathcal{Q}$ 的真实标签集合                                 \\
+	$f_\theta$                                                                            & 参数化模型         & 参数为 $\theta$ 的模型或学习器                                      \\
+	$\theta$                                                                              & 模型参数          & 可学习的模型参数                                                  \\
+	$\mathbb{E}[\cdot]$                                                                   & 期望算子          & 在分布上取数学期望                                                 \\
+	$\mathcal{L}$                                                                         & 损失函数          & 训练/评估中使用的目标函数                                             \\
+	$\Theta_T,\,\Theta_S$                                                                 & 教师/学生参数       & 教师与学生模型的参数                                                \\
+	$\Theta_{T'}$                                                                         & 教师预训练参数       & 教师在任务微调前的预训练参数                                            \\
+	$s_{\Theta}(x)$                                                                       & Logits        & 输入 $x$ 上的未归一化输出分数                                         \\
+	$T$                                                                                   & 温度系数          & Softmax 温度，用于生成更平滑的软分布                                    \\
+	$p_T,\,p_S$                                                                           & 教师/学生分布       & 教师/学生的软概率分布                      \\
+	$D_{\mathrm{KL}}(\cdot\Vert\cdot)$                                                    & KL 散度         & Kullback--Leibler 散度，度量分布差异                               \\
+	$\mathcal{L}_{\mathrm{KD}},\,\mathcal{L}_{\mathrm{MLM}},\,\mathcal{L}_{\mathrm{CPD}}$ & 蒸馏/MLM/对比蒸馏损失 & 知识蒸馏、掩码语言建模与对比蒸馏等损失项                                      \\
+	$\lambda_j$                                                                           & 损失权重          & 各损失项的加权系数                                                 \\
+	$X,\,\tilde{X}$                                                                       & 监督/无标注样本集     & 少样本训练集与用于蒸馏的无标注数据                                         \\
+	$\mathcal{A}$                                                                         & 搜索空间          & NAS 候选架构集合                                                \\
+	$a\in\mathcal{A}$                                                                     & 架构            & 待搜索的网络结构                                                  \\
+	$w,\,\mathcal{W}_a$                                                                   & 权重/权重空间       & 架构权重与其可行集合                                                \\
+	$\mathcal{L}_{\mathrm{train}},\,\mathcal{L}_{\mathrm{val}}$                           & 训练/验证损失       & NAS 内外层优化目标 \\
+	$\bm{x}$                                                                              & 输入架构序列        & 神经架构的序列化表示（第四章）                                           \\
+	$\bm{z}$                                                                              & 潜变量           & VAE 的隐变量                                                  \\
+	$q_{\phi}(\bm{z}\mid\bm{x})$                                                          & 编码器           & VAE 近似后验分布                                                \\
+	$p_{\theta}(\bm{x}\mid\bm{z})$                                                        & 解码器           & VAE 生成分布                                                  \\
+	$\mathcal{L}_{\phi,\theta}(\bm{x})$                                                   & 证据下界 (ELBO)   & VAE 的优化目标，含重建项与 KL 正则                                     \\
+	$\bm{m}$                                                                              & 记忆向量          & 序列记忆/\texttt{CLS} 隐状态                                     \\
+	$L$                                                                                   & 序列长度          & 生成/解码的最大序列长度                                              \\
+	$\mathcal{M}=\{M_1,\dots,M_n\}$                                                       & 专家模型集合        & 待融合的专长 LLM 集合                                             \\
+	$\tau_j\in\mathcal{T}$                                                                & 来自任务集合的下游任务            & 评估任务或基准                                                   \\
+	$\mathrm{Merge}(\mathcal{M},\boldsymbol{\alpha})$                                     & 融合算子          & 按权重 $\boldsymbol{\alpha}$ 融合模型参数                          \\
+	$\boldsymbol{\alpha}$                                                                 & 融合权重          & 模型融合的系数向量                                                 \\
+	$\mathcal{F}$                                                                         & 评估函数          & 汇总融合模型在多任务上的表现                                            \\
+	$w_j$                                                                                 & 任务权重          & 评估函数中各任务的权重                                               \\
+	$\mathcal{C}$                                                                         & 约束空间          & 融合权重的可行域（如单纯形）                                            \\
+	$\Delta^{n-1}$                                                                        & 单纯形             & 融合权重 $\boldsymbol{\alpha}$ 的标准约束域                              \\
+	$f=(\mathcal{M}_f,\mathcal{T}_f)$                                                     & 形式 (Form)     & 子问题的模型/任务子集                                               \\
+	$\ell$                                                                                & 课程级别          & 形式的难度等级                                                   \\
+	$G=(V,E)$                                                                             & 知识图谱          & 模型与任务关系的异构图                                               \\
+	$s_{ii'}$                                                                             & 协同分数          & 模型 $M_i$ 与 $M_{i'}$ 的协同强度                                 \\
+	$u_{ii'}$                                                                             & 不确定度          & 模型对关系的不确定度                                                \\
+	$\pi_{ij}$                                                                            & 模型–任务性能       & 模型 $M_i$ 在任务 $\tau_j$ 上的得分                                \\
+	$\hat{y}_f$                                                                           & 预测评分          & GNN 预测的形式性能                                               \\
+	$\hat{\boldsymbol{\alpha}}_f$                                                         & 预测权重          & GNN 预测的融合系数                                               \\
+	$\hat{S}_f$                                                                           & 预测协同矩阵        & GNN 预测的形式内协同关系                                            \\
+	$\boldsymbol{\alpha}_f^{\star}$                                                       & 最优权重          & 形式 $f$ 的最优融合系数                                            \\
+	$g_f(i,i')$                                                                           & 协同增益          & 形式内模型对的协同增益量                                              \\
+	$R$                                                                                   & 相关矩阵          & 由协同矩阵导出的相关性矩阵                                             \\
+	$\sigma(f)$                                                                           & 不确定性聚合        & 形式的不确定性度量                                                 \\
+	$\rho$                                                                                & 秩相关系数         & Spearman 秩相关系数                                            \\
+	% \bottomrule
+	% (按出现顺序到此结束)
+\end{xltabular}

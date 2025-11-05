@@ -7,8 +7,8 @@
 	% ===================
 	%	论文的中英文题目
 	% ===================
-	ctitle = {基于知识迁移的深度模型高效构建研究},
-	etitle = {Efficient Deep Model Construction via Knowledge Transfer},
+	ctitle = {基于知识迁移的深度模型高效构建方法研究},
+	etitle = {Research on Efficient Construction Methods for Deep Learning Models Based on Knowledge Transfer},
 	% ===================
 	% 作者部分的信息
 	% \secretize{}为盲审标记点，在打开盲审开关时内容会自动被替换为***输出，盲审开关默认关闭
@@ -26,7 +26,7 @@
 	cclass = \secretize{\rmfamily{2025}\heiti{年}\rmfamily{12}\heiti{月}},	% 博士生和学硕填学科门类，学硕填学科类型
 	edgree = {},	% 专硕填Professional Degree，其他按实情填写
 	% % 提示：如果内容太长，可以用\zihao{}命令控制字号，作用范围：{}内
-	cmajor = {工~~~~学},	% 专硕不需填，填写专业名称
+	cmajor = {工~~~学},	% 专硕不需填，填写专业名称
 	emajor = {Computer Science and Technology}, % % 专硕不需填，填写专业英文名称
 	cmajora = {计算机科学与技术},	% 专硕不需填，填写专业名称
 	cmajorb = {深度学习},
@@ -49,31 +49,33 @@
 %
 % ===================
 \begin{cabstract}	% 中文摘要
-	深度学习在众多领域取得了显著成就，但其模型性能的提升往往伴随着数据、算力与人力成本的急剧增长，形成了严峻的“规模-效率”矛盾，制约了技术的广泛应用与可持续发展。为应对这一挑战，本文以“知识迁移”作为核心指导思想，旨在探索通过系统性地复用与传递已有知识资产以提升深度模型构建效率的方法论。基于对模型构建过程的分析，研究从知识获取、结构承载与参数实现三个关键环节出发，分别探讨了知识迁移思想在不同维度上的具体应用与实践。
+	作为推动新一轮科技革命的关键技术力量，深度学习在数据规模、模型架构与计算资源的共同驱动下取得显著进展，但由此引发的训练与构建成本快速攀升，使“规模–效率矛盾”成为制约进一步发展的关键瓶颈。为清晰刻画效率瓶颈，本文引入“深度模型构建（Deep Model Construction）”概念，将以往以参数优化为中心的模型训练视角扩展为覆盖数据与知识准备、模型设计与实现、模型参数实现三个核心环节的完整构建流程；构建效率对应地体现为数据标注与整理成本、架构选择与评估成本，以及参数实现与优化的计算和能耗开销等。
+	现有方法在三个环节形成了较为丰富的技术谱系：在数据与知识准备方面，少样本、半监督与知识蒸馏等方法降低了对大规模标注的依赖；在模型设计与实现方面，轻量化算子、剪枝量化与神经架构搜索（Neural Architecture Search，NAS）提高了结构与实现的性价比；在参数实现方面，预训练–微调与参数高效微调（Parameter-Efficient Fine-Tuning，PEFT）、以及免训练的模型融合提升了复用效率。然而，性能优先、效率滞后的评测取向仍然常见；同时，面向效率的做法在三个环节各自存在核心问题，例如：少样本情境下的知识迁移稳定性不足，异构搜索空间之间的架构经验难以复用，免训练模型融合中的参数冲突与任务性能退化仍未得到有效解决。
+	针对上述问题，本文采用知识迁移作为研究视角，围绕深度模型构建的三个关键环节分别开展研究，目标是提升数据效率、搜索效率与参数实现效率。主要研究内容与创新点如下：
 
-	在知识层面，针对少样本场景下模型对标注数据高度依赖且知识蒸馏稳定性差的问题，本文提出了 Prompt-Distiller 方法。该方法通过融合双教师知识与对比学习策略，实现了低资源条件下从大型提示学习模型到小型学生模型的鲁棒知识迁移，显著提升了数据匮乏环境下的模型构建效率与性能 。
+	（1）数据与知识准备环节：基于双教师对比学习的少样本知识蒸馏。对于少样本场景下知识蒸馏不稳定、易过拟合的问题，本文充分挖掘可利用的外部与隐含信息，通过多视角教师知识与对比式正则约束共同丰富学生模型的学习信号，从而提升其在少样本条件下的表征判别性与迁移稳定性。不同于传统仅依赖单一教师输出概率分布的蒸馏方式，本文从多层次与多视角出发，引入两类互补教师模型：一方面，使用规模较大的预训练教师模型，提供全局语义层面的通用知识；另一方面，采用经少样本提示微调后的教师模型，使其在目标任务上具备更强的领域适应性。二者的结合构成一种多视角后验知识体系，使学生模型既能继承通用表征，又能获得任务特定的细粒度知识。在多个测试基准上的广泛实验表明，所提方法在少样本条件下显著优于现有蒸馏与微调方法，验证了多教师协同与对比增强的知识迁移策略在提升数据效率方面的有效性。
 
-	在结构层面，为解决神经架构搜索 (Neural Architecture Search, NAS) 成本高昂且架构经验难以跨越异构搜索空间复用的瓶颈，本文构建了 \textsc{Bridge} 框架。该框架通过统一的神经架构表示学习与跨域映射机制，结合进化序贯迁移优化（ESTO）策略，首次实现了跨异构搜索空间的架构知识有效迁移，大幅降低了自动化模型设计的开销 。
+	（2）架构设计环节：基于表征学习的跨空间可迁移神经架构搜索。针对异构搜索空间间难以复用架构和设计经验、冷启动成本高的问题，本文首先提出了统一的模型构架编码，以适应异构的架构搜索空间。其次，提出了混合监督的神经架构的表征学习方法，将神经架构嵌入到平滑的连续表征空间。基于该嵌入，构建空间之间的“桥接”映射与迁移式性能预测，实现跨空间的快速筛选与早停。该方案在保持所得架构竞争力的同时，显著降低搜索与评估开销，提升搜索效率与经验复用度。实验结果表明，所提方法在多个异构搜索空间上均实现了优异的搜索效率与架构性能，验证了跨空间知识迁移在提升神经架构搜索效率方面的有效性。此外，还提供了对迁移机制与表征空间的深入分析，揭示了架构表征学习与跨空间迁移的内在联系。
 
-	在参数层面，聚焦于参数融合中存在的稳定性与性能保持难题，本文提出了 KG-MFTO 范式。该方法利用知识图谱显式建模模型关系，并通过课程规划与知识引导的进化求解器，在零训练条件下实现了多个大型语言模型（LLM）参数的高效、稳定融合，为模型能力的即时、低成本集成提供了新的解决方案 。
-
-	本文通过 Prompt-Distiller、\textsc{Bridge} 和 KG-MFTO 这三项分别聚焦于知识、结构、参数层面的独立研究工作，为深度模型的高效构建提供了具体的技术手段，验证了知识迁移思想在应对不同效率瓶颈方面的有效性与潜力，为推动深度学习向更高效、可持续的方向发展贡献了有益的探索。
+	（3）模型参数实现环节：知识图谱引导的多形式优化模型融合。面向多模型融合的参数冲突与任务性能退化问题，本文提出构建一个动态演化的知识图谱，用图结构显式编码模型–模型和模型–任务间的关系信息，并通过图注意力网络（Graph Attention Networks, GAT）将模型和任务嵌入到连续表征空间。其次，通过一个课程规划器基于多形式迁移优化（Multi-Form Transfer Optimization，MFTO）的思想自适应地提出子问题（即形式）。提出的子问题将交由一个知识引导的演化求解器，融合领域知识以热启动 CMA-ES 演化算法，用来自知识图谱的先验指导搜索。通过这三者的配合，本文实现了优化过程中的持续知识积累与迁移：每当求解一个子问题后，系统都会将所得的模型–任务适应性结果反馈回知识图谱，更新图结构与节点表征，从而为后续子问题的求解提供更丰富的先验信息。实验结果表明，所提方法在多个大规模语言模型（Large Language Models, LLM）融合任务上均实现了优异的融合效率与任务性能，验证了知识图谱引导的多形式优化在提升模型参数实现效率方面的有效性。此外，还提供了对知识图谱结构与演化求解器行为的深入分析，揭示了知识引导优化与模型融合性能之间的内在联系。
 \end{cabstract}
 % 中文关键词，请使用英文逗号分隔：
-\ckeywords{深度学习；高效人工智能；知识迁移；小样本学习；知识蒸馏；神经架构搜索；模型融合}
+\ckeywords{深度神经网络;高效人工智能;迁移学习;大语言模型}
 
 \begin{eabstract}	% 英文摘要
-	Deep learning has achieved remarkable success across numerous domains, yet the enhancement of model performance is often accompanied by a dramatic increase in data, computational, and human costs. This has led to a critical "scale-efficiency" contradiction, hindering the technology's widespread application and sustainable development. To address this challenge, this dissertation adopts "Knowledge Transfer" as the core guiding principle, aiming to explore methodologies for improving the efficiency of deep model construction by systematically reusing and transferring existing knowledge assets. Based on an analysis of the model construction process, this research investigates the specific applications and practices of the knowledge transfer concept within three key dimensions: knowledge acquisition, structure bearing, and parameter implementation, exploring each independently.
+	As a key driving force in the new wave of technological revolution, deep learning has made remarkable progress under the joint momentum of large-scale data, sophisticated model architectures, and powerful computational resources. However, the rapidly increasing cost of model training and construction has led to an escalating ``scale-efficiency contradiction,'' which has become a critical bottleneck for further advancement. To clearly characterize this bottleneck, this thesis introduces the concept of Deep Model Construction, extending the traditional training perspective centered on parameter optimization into a complete construction pipeline encompassing three core stages: data and knowledge preparation, model design and implementation, and parameter realization. Accordingly, construction efficiency reflects the costs of data annotation and organization, architecture selection and evaluation, as well as the computational and energy overheads of parameter realization and optimization.
 
-	At the knowledge layer, addressing the high dependency on labeled data and the instability of knowledge distillation in few-shot scenarios, this dissertation proposes the Prompt-Distiller method. By integrating dual-teacher knowledge and a contrastive learning strategy, Prompt-Distiller achieves robust knowledge transfer from large prompt-based learning models to small student models under low-resource conditions, significantly enhancing model construction efficiency and performance in data-scarce environments .
+	Existing studies have developed a rich technical spectrum across these three stages: in data and knowledge preparation, few-shot learning, semi-supervised learning, and knowledge distillation reduce the dependence on large-scale annotations; in model design and implementation, lightweight operators, pruning and quantization, and neural architecture search (NAS) improve structural and computational efficiency; in parameter realization, pre-training and fine-tuning, parameter-efficient fine-tuning (PEFT), and training-free model merging enhance reuse efficiency. Nevertheless, performance-centric evaluation remains prevalent, and efficiency-oriented approaches in each stage face core challenges: unstable knowledge transfer under few-shot settings, limited reusability of architectural experience across heterogeneous search spaces, and persistent parameter conflicts and task degradation in training-free model fusion.
 
-	At the structure layer, to tackle the high computational cost of Neural Architecture Search (NAS) and the difficulty of reusing architectural experience across heterogeneous search spaces, the \textsc{Bridge} framework is constructed. Through unified neural architecture representation learning, cross-domain mapping mechanisms, and an Evolutionary Sequential Transfer Optimization (ESTO) strategy, \textsc{Bridge} enables effective architectural knowledge transfer across heterogeneous search spaces for the first time, substantially reducing the overhead of automated model design .
+	To address these issues, this thesis adopts knowledge transfer as the overarching research perspective and conducts systematic studies across the three critical stages of deep model construction, aiming to improve data efficiency, search efficiency, and parameter realization efficiency. The main research contents and contributions are as follows:
 
-	At the parameter layer, focusing on the stability and performance retention challenges in parameter merging, the KG-MFTO paradigm is proposed. This method utilizes a knowledge graph to explicitly model inter-model relationships and employs curriculum planning along with a knowledge-guided evolutionary solver to achieve efficient and stable merging of parameters from multiple Large Language Models (LLMs) under zero-training conditions, offering a novel solution for instant, low-cost capability integration .
+	(1) Data and Knowledge Preparation: Few-shot knowledge distillation via dual-teacher contrastive learning. To mitigate the instability and overfitting issues of knowledge distillation under few-shot conditions, this thesis fully exploits external and implicit information by jointly employing multi-view teacher knowledge and contrastive regularization to enrich the student model’s learning signals. Unlike traditional single-teacher distillation relying solely on output distributions, this work introduces two complementary teachers from different perspectives: \circled{1} a large pre-trained teacher providing general semantic knowledge, and \circled{2} a task-adapted teacher fine-tuned via few-shot prompting to capture task-specific representations. Their combination forms a multi-view posterior knowledge system, enabling the student to inherit both general and task-specific knowledge. Extensive experiments on multiple benchmarks demonstrate that the proposed method significantly outperforms existing distillation and fine-tuning baselines under few-shot settings, validating the effectiveness of multi-teacher collaboration and contrastive enhancement in improving data efficiency.
 
-	Through these three independent research efforts—Prompt-Distiller, \textsc{Bridge}, and KG-MFTO—focused respectively on the knowledge, structure, and parameter layers, this dissertation provides concrete technical approaches for efficient deep model construction. It validates the effectiveness and potential of the knowledge transfer principle in addressing diverse efficiency bottlenecks, contributing valuable explorations toward advancing deep learning in a more efficient and sustainable direction.
+	(2) Architecture Design: Cross-space transferable neural architecture search via representation learning. To overcome the difficulty of reusing design experience across heterogeneous search spaces and the high cost of cold-start searches, this thesis first proposes a unified model encoding scheme applicable to diverse search spaces. Then, a hybrid-supervised architecture representation learning method is developed to embed neural architectures into a smooth continuous space. Based on this embedding, a ``bridge'' mapping and transfer-based performance prediction mechanism are established to enable cross-space rapid selection and early stopping. The proposed framework maintains competitive architecture quality while substantially reducing search and evaluation costs, thereby improving both search efficiency and experience transferability. Experimental results show consistent advantages across heterogeneous search spaces, confirming the effectiveness of cross-space knowledge transfer in enhancing NAS efficiency. In-depth analysis further reveals the intrinsic connection between architecture representation learning and cross-space transfer mechanisms.
+
+	(3) Parameter Realization: Knowledge-graph-guided multi-form transfer optimization for model merging. To tackle parameter conflicts and task degradation in multi-model fusion, this thesis constructs a dynamically evolving knowledge graph that explicitly encodes model–model and model–task relationships. Graph Attention Networks (GATs) are used to embed models and tasks into a continuous representation space. A curriculum planner, inspired by Multi-Form Transfer Optimization (MFTO), adaptively decomposes the fusion problem into sub-problems (forms), which are then solved by a knowledge-guided evolutionary solver. The solver integrates domain knowledge to warm-start the CMA-ES evolutionary process, with priors derived from the knowledge graph guiding the optimization. Through the interplay of these components, the system achieves continual knowledge accumulation and transfer during optimization: after solving each sub-problem, model–task adaptation results are fed back into the knowledge graph to update its structure and embeddings, enriching priors for subsequent problems. Experimental results on multiple large language model (LLM) merging tasks demonstrate superior fusion efficiency and task performance, validating the effectiveness of knowledge-graph-guided multi-form optimization for improving parameter realization efficiency. Further analyses elucidate the intrinsic connection between knowledge-guided optimization dynamics and model fusion performance.
 \end{eabstract}
 % 英文关键词，请使用英文逗号分隔，关键词内可以空格：
-\ekeywords{Deep Learning; Efficient Artificial Intelligence; Knowledge Transfer; Few-Shot Learning; Knowledge Distillation; Neural Architecture Search; Model Merging}
+\ekeywords{Deep Neural Networks; Efficient Artificial Intelligence; Transfer Learning; Large Language Models}
 
 % 封面和摘要配置完成

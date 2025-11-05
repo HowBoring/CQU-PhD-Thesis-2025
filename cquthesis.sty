@@ -4,6 +4,7 @@
 
 \usepackage{fontspec}
 \setmainfont{Times New Roman}
+\setCJKmainfont{simsun.ttf}[AutoFakeSlant,AutoFakeBold]
 
 \usepackage[linesnumbered,ruled,vlined,resetcount,algochapter]{algorithm2e}
 \usepackage{dsfont}
@@ -197,3 +198,11 @@
 }
 
 \renewcommand\bibnumfmt[1]{[#1]\hfill}
+
+\newcommand{\secretchoose}[2]{%
+  \ifcqu@blindtrail
+    #1%
+  \else
+    #2%
+  \fi
+}
