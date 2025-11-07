@@ -60,18 +60,18 @@
 \usepackage{titletoc} % 引入 titletoc 宏包
 
 \titlecontents{figure}
-  [0pt] % 左边距
-  {\fontsize{10.5}{15}图~\selectfont\parskip0pt\parindent0pt} % 字体设置和行距
-  {\thecontentslabel\enspace} % 编号
-  {}
-  {\titlerule*[0.3pc]{.}\contentspage}
+[0pt] % 左边距
+{\fontsize{10.5}{15}图~\selectfont\parskip0pt\parindent0pt} % 字体设置和行距
+{\thecontentslabel\enspace} % 编号
+{}
+{\titlerule*[0.3pc]{.}\contentspage}
 
 \titlecontents{table}
-  [0pt] % 左边距
-  {\fontsize{10.5}{15}表~\selectfont\parskip0pt\parindent0pt} % 字体设置和行距
-  {\thecontentslabel\enspace} % 编号
-  {}
-  {\titlerule*[0.3pc]{.}\contentspage}
+[0pt] % 左边距
+{\fontsize{10.5}{15}表~\selectfont\parskip0pt\parindent0pt} % 字体设置和行距
+{\thecontentslabel\enspace} % 编号
+{}
+{\titlerule*[0.3pc]{.}\contentspage}
 
 % 消除章节之间的间距
 \newcommand{\removelofgap}{\addtocontents{lof}{\vspace{-10pt}}}
@@ -139,11 +139,11 @@
 \DeclareRobustCommand\csgo[2]{\cs{#1\{#2\}}}
 
 \newcommand*{\meta}[1]{{%
-		\ensuremath{\langle}\rmfamily\itshape#1\/\ensuremath{\rangle}}}
+			\ensuremath{\langle}\rmfamily\itshape#1\/\ensuremath{\rangle}}}
 \providecommand\marg[1]{%
 	{\ttfamily\char`\{}\meta{#1}{\ttfamily\char`\}}}
 \providecommand\oarg[1]{%
-	{\ttfamily[}\meta{#1}{\ttfamily]}}
+{\ttfamily[}\meta{#1}{\ttfamily]}}
 \providecommand\parg[1]{%
 	{\ttfamily(}\meta{#1}{\ttfamily)}}
 \providecommand\pkg[1]{{\sffamily#1}}
@@ -194,15 +194,15 @@
 \newcommand{\hollowstar}{\text{\ding{73}}}
 
 \newcommand{\bilingualcaption}[3]{%
-\caption[#1]{#2 \\ Table \thechapter.\arabic{table} #3}%
+	\caption[#1]{#2 \\ Table \thechapter.\arabic{table} #3}%
 }
 
 \renewcommand\bibnumfmt[1]{[#1]\hfill}
 
 \newcommand{\secretchoose}[2]{%
-  \ifcqu@blindtrail
-    #1%
-  \else
-    #2%
-  \fi
+	\ifcqu@blindtrail
+		#1%
+	\else
+		#2%
+	\fi
 }
