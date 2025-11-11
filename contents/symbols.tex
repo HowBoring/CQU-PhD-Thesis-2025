@@ -37,12 +37,12 @@
 	$a\in\mathcal{A}$                                                                     & 架构            & 待搜索的网络结构                                                  \\
 	$w,\,\mathcal{W}_a$                                                                   & 权重/权重空间       & 架构权重与其可行集合                                                \\
 	$\mathcal{L}_{\mathrm{train}},\,\mathcal{L}_{\mathrm{val}}$                           & 训练/验证损失       & NAS 内外层优化目标 \\
-	$\bm{x}$                                                                              & 输入架构序列        & 神经架构的序列化表示（第四章）                                           \\
+	$\bm{x}$                                                                              & 输入架构序列        & 神经架构的序列化表示                                           \\
 	$\bm{z}$                                                                              & 潜变量           & VAE 的隐变量                                                  \\
 	$q_{\phi}(\bm{z}\mid\bm{x})$                                                          & 编码器           & VAE 近似后验分布                                                \\
 	$p_{\theta}(\bm{x}\mid\bm{z})$                                                        & 解码器           & VAE 生成分布                                                  \\
-	$\mathcal{L}_{\phi,\theta}(\bm{x})$                                                   & 证据下界 (ELBO)   & VAE 的优化目标，含重建项与 KL 正则                                     \\
-	$\bm{m}$                                                                              & 记忆向量          & 序列记忆/\texttt{CLS} 隐状态                                     \\
+	$\mathcal{L}_{\phi,\theta}(\bm{x})$                                                   & 证据下界（ELBO）   & VAE 的优化目标，含重建项与 KL 正则                                     \\
+	$\bm{m}$                                                                              & 记忆向量          & 序列记忆 / \texttt{CLS} 隐状态                                     \\
 	$L$                                                                                   & 序列长度          & 生成/解码的最大序列长度                                              \\
 	$\mathcal{M}=\{M_1,\dots,M_n\}$                                                       & 专家模型集合        & 待融合的专长 LLM 集合                                             \\
 	$\tau_j\in\mathcal{T}$                                                                & 来自任务集合的下游任务            & 评估任务或基准                                                   \\
@@ -52,7 +52,7 @@
 	$w_j$                                                                                 & 任务权重          & 评估函数中各任务的权重                                               \\
 	$\mathcal{C}$                                                                         & 约束空间          & 融合权重的可行域（如单纯形）                                            \\
 	$\Delta^{n-1}$                                                                        & 单纯形             & 融合权重 $\boldsymbol{\alpha}$ 的标准约束域                              \\
-	$f=(\mathcal{M}_f,\mathcal{T}_f)$                                                     & 形式 (Form)     & 子问题的模型/任务子集                                               \\
+	$f=(\mathcal{M}_f,\mathcal{T}_f)$                                                     & 形式（Form）     & 子问题的模型/任务子集                                               \\
 	$\ell$                                                                                & 课程级别          & 形式的难度等级                                                   \\
 	$G=(V,E)$                                                                             & 知识图谱          & 模型与任务关系的异构图                                               \\
 	$s_{ii'}$                                                                             & 协同分数          & 模型 $M_i$ 与 $M_{i'}$ 的协同强度                                 \\

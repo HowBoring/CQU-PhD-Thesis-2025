@@ -24,14 +24,14 @@
 
 在数据与知识层面，知识迁移主要体现为模型所学习到的抽象语义知识与判别能力的传递。这里的知识通常指模型通过大规模数据训练所获得的、超越具体样本的、具有一定通用性的理解，例如对输入数据（如图像、文本）的层次化特征表示、对不同概念或类别之间关系的捕捉、乃至在特定任务（如推理、生成）中形成的隐式规则或启发式策略。当面临新任务，特别是标注数据稀缺（如少样本学习）的情况时，直接从头学习这些复杂的抽象知识是极其困难的。此时，将一个已在相关或通用大规模数据上训练好的教师模型所掌握的这种抽象知识，通过某种机制（如知识蒸馏）迁移给资源受限下训练的学生模型，便成为提升后者性能与泛化能力的关键途径。知识蒸馏正是实现此类知识传递的代表性技术\cite{modelcompression_bucilua_2006,distillingknowledgeneural_hinton_2015,fitnetshintsthin_romero_2015}。本文第 \ref{sec:ch3-dual-contrastive-distillation-for-few-shot-prompts} 章的研究工作即聚焦于此，旨在探索如何在少样本条件下，设计更鲁棒的蒸馏机制以实现这种语义知识的高效与稳定迁移。
 
-在参数层面，知识迁移以一种最为直接的形式体现，即已训练模型参数权重本身的传递、调整与组合。现代深度学习，尤其是基于大规模预训练模型的范式，其核心优势就在于预训练模型参数中已经编码了海量的通用世界知识和语言/视觉基础能力 \cite{bertpretraining_devlin_2019,languagemodelsare_brown_2020}。传统的微调和参数高效微调（如 Adapters、LoRA）本质上就是对这些参数知识进行适配和利用 \cite{parameterefficienttransfer_houlsby_2019,loralowrank_hu_2022}。而模型融合则探索了更进一步的可能性：能否在完全免重复训练的条件下，通过直接操纵和组合来自不同专长模型的参数，快速构建出具备集成能力的新模型？这一路线已在权重平均与加权融合等方法中得到初步验证 \cite{modelsoupsaveraging_wortsman_2022,mergingmodelsfisher_matena_2022,editingmodelstask_ilharco_2023}。这种方式旨在通过对参数知识的直接迁移与整合来实现能力的即时构建。然而，如何智能地进行参数组合以避免冲突并保留各自优势，是其核心难题 \cite{gitrebasin_ainsworth_2023,losssurfacesmode_garipov_2018}。本文第 \ref{sec:ch5-knowledge-guided-multi-form-optimization-for-llm-merging} 章的研究工作将聚焦于此，研究如何通过知识引导的优化策略，实现这种参数知识的高效、稳定融合。
+在参数层面，知识迁移以一种最为直接的形式体现，即已训练模型参数权重本身的传递、调整与组合。现代深度学习，尤其是基于大规模预训练模型的范式，其核心优势就在于预训练模型参数中已经编码了海量的通用世界知识和语言/视觉基础能力 \cite{bertpretraining_devlin_2019,languagemodelsare_brown_2020}。传统的微调和参数高效微调（如 Adapters、LoRA）本质上就是对这些参数知识进行适配和利用 \cite{parameterefficienttransfer_houlsby_2019,loralowrank_hu_2022}。而模型融合则探索了更进一步的可能性：能否在完全免重复训练的条件下，通过直接操纵和组合来自不同专家模型的参数，快速构建出具备集成能力的新模型？这一路线已在权重平均与加权融合等方法中得到初步验证 \cite{modelsoupsaveraging_wortsman_2022,mergingmodelsfisher_matena_2022,editingmodelstask_ilharco_2023}。这种方式旨在通过对参数知识的直接迁移与整合来实现能力的即时构建。然而，如何智能地进行参数组合以避免冲突并保留各自优势，是其核心难题 \cite{gitrebasin_ainsworth_2023,losssurfacesmode_garipov_2018}。本文第 \ref{sec:ch5-knowledge-guided-multi-form-optimization-for-llm-merging} 章的研究工作将聚焦于此，研究如何通过知识引导的优化策略，实现这种参数知识的高效、稳定融合。
 
 综上所述，知识迁移作为本文的核心指导理念，其内涵与实现在不同层面各有侧重。架构层关注设计模式与经验的迁移，依赖于架构的表示与演化。知识层关注抽象语义知识的迁移，依赖于模型间的映射与对齐。而参数层则关注具体参数权重的迁移与组合，依赖于对参数空间几何与知识兼容性的理解。正是基于对知识迁移在不同维度上多样化体现及其面临挑战的认识，本文分别展开了后续三个章节的独立研究。这些研究虽各有侧重，但共同构成了对“基于知识迁移的深度模型高效构建”这一核心命题的多方位探索与回应。
 
 \mysection{神经架构搜索}
 \label{sec:ch2-3-2-neural-architecture-search}
 
-\textbf{神经架构搜索（Neural Architecture Search, NAS）} 代表了自动化机器学习领域的一个重要研究方向，旨在将原先高度依赖人工经验和大量试错的神经网络架构设计过程自动化。其核心目标是在一个预定义的、通常极其庞大的候选架构集合，即搜索空间 $\mathcal{A}$ 中，通过特定的算法自动地寻找能够针对目标任务和给定数据集达到最优或近优性能的架构 $a^*$。一个架构 $a \in \mathcal{A}$ 严谨地定义了网络的计算图结构，包括其层级组成、节点之间的连接关系、以及在节点或边上执行的具体数学运算（例如卷积层、池化层、自注意力模块等）及其相关配置。搜索空间 $\mathcal{A}$ 本身的设计至关重要，它界定了架构设计的语法规则和基础构件，其表达能力与规模直接影响了最终可能发现架构的性能上限与搜索的难度。例如，搜索空间可以是基于重复单元的微观结构设计，也可以是面向整个网络宏观拓扑的全局规划\cite{neuralarchitecturesearch_elsken_2019}。
+\textbf{神经架构搜索（Neural Architecture Search，NAS）} 代表了自动化机器学习领域的一个重要研究方向，旨在将原先高度依赖人工经验和大量试错的神经网络架构设计过程自动化。其核心目标是在一个预定义的、通常极其庞大的候选架构集合，即搜索空间 $\mathcal{A}$ 中，通过特定的算法自动地寻找能够针对目标任务和给定数据集达到最优或近优性能的架构 $a^*$。一个架构 $a \in \mathcal{A}$ 严谨地定义了网络的计算图结构，包括其层级组成、节点之间的连接关系、以及在节点或边上执行的具体数学运算（例如卷积层、池化层、自注意力模块等）及其相关配置。搜索空间 $\mathcal{A}$ 本身的设计至关重要，它界定了架构设计的语法规则和基础构件，其表达能力与规模直接影响了最终可能发现架构的性能上限与搜索的难度。例如，搜索空间可以是基于重复单元的微观结构设计，也可以是面向整个网络宏观拓扑的全局规划\cite{neuralarchitecturesearch_elsken_2019}。
 
 从形式化的角度看，NAS 过程通常可以被抽象为一个具有挑战性的双层优化问题：
 \begin{align}
@@ -47,9 +47,9 @@
 	\label{fig:nas-bilevel-optimization}
 \end{figure}
 
-如图 \ref{fig:nas-bilevel-optimization} 所示，典型的 NAS 框架通常由三个关键组件协同工作：首先是定义候选架构集合及其编码方式的\textbf{搜索空间} $\mathcal{A}$；其次是决定如何在 $\mathcal{A}$ 中高效探索、生成新架构的\textbf{搜索策略}，例如基于强化学习、演化算法、梯度优化或随机搜索等不同机制（如基于强化学习的 \cite{neuralarchitecturesearch_zoph_2017}、演化算法的 \cite{regularizedevolutionimage_real_2019}、梯度优化的 \cite{dartsdifferentiablearchitecture_liu_2019}）；最后是为了缓解内层优化带来的巨大开销，需要设计有效的\textbf{性能评估策略}，例如通过参数共享\cite{efficientneuralarchitecture_pham_2018}、代理模型预测\cite{neuralpredictorneural_wen_2020}、早停机制或一次性训练\cite{singlepathone_guo_2020,cellbasedfast_dong_2023}等手段来快速估计或比较候选架构的潜力。NAS 的主要挑战正源于搜索空间 $\mathcal{A}$ 的离散性、高维性以及评估架构性能所需的高昂计算成本\cite{neuralarchitecturesearch_elsken_2019,nasbench101_ying_2019}。
+如图 \ref{fig:nas-bilevel-optimization} 所示，典型的 NAS 框架通常由三个关键组件协同工作：首先是定义候选架构集合及其编码方式的\textbf{搜索空间} $\mathcal{A}$；其次是决定如何在 $\mathcal{A}$ 中高效探索、生成新架构的\textbf{搜索策略}，例如基于强化学习\cite{neuralarchitecturesearch_zoph_2017}、演化算法\cite{regularizedevolutionimage_real_2019}、梯度优化或随机搜索等不同机制\cite{dartsdifferentiablearchitecture_liu_2019}；最后是为了缓解内层优化带来的巨大开销，需要设计有效的\textbf{性能评估策略}，例如通过参数共享\cite{efficientneuralarchitecture_pham_2018}、代理模型预测\cite{neuralpredictorneural_wen_2020}、早停机制或一次性训练\cite{singlepathone_guo_2020,cellbasedfast_dong_2023}等手段来快速估计或比较候选架构的潜力。NAS 的主要挑战正源于搜索空间 $\mathcal{A}$ 的离散性、高维性以及评估架构性能所需的高昂计算成本\cite{neuralarchitecturesearch_elsken_2019,nasbench101_ying_2019}。
 
-为了进一步提升 NAS 的效率，特别是当面临一系列相关任务需要设计架构时，可迁移神经架构搜索（Transferable NAS, TNAS）的思想被提出。TNAS 的核心在于知识迁移：尝试将在一个或多个源任务或对应的源搜索空间 $\mathcal{A}^{(S)}$ 上进行 NAS 时获得的知识或经验，迁移并应用于新的目标任务或目标搜索空间 $\mathcal{A}^{(T)}$ 的架构搜索过程中。这种可迁移的知识形式多样，可以包括已被验证有效的架构构件、跨任务的性能预测模型、或是能够指导搜索方向的策略偏置等\cite{learningtransferablearchitectures_zoph_2018,neuralarchitecturetransfer_lu_2021,archgraphacyclic_huang_2022,generalpurposetransferable_han_2023}。其最终目的是通过复用先验经验，避免在每个新任务上都完全从零开始搜索，从而加速收敛过程、减少所需的评估次数，甚至可能发现更好的架构解。
+为了进一步提升 NAS 的效率，特别是当面临一系列相关任务需要设计架构时，可迁移神经架构搜索 TNAS 的思想被提出。TNAS 的核心在于知识迁移，尝试将在一个或多个源任务或对应的源搜索空间 $\mathcal{A}^{(S)}$ 上进行 NAS 时获得的知识或经验，迁移并应用于新的目标任务或目标搜索空间 $\mathcal{A}^{(T)}$ 的架构搜索过程中。这种可迁移的知识形式多样，可以包括已被验证有效的架构构件、跨任务的性能预测模型、或是能够指导搜索方向的策略偏置等\cite{learningtransferablearchitectures_zoph_2018,neuralarchitecturetransfer_lu_2021,archgraphacyclic_huang_2022,generalpurposetransferable_han_2023}。其最终目的是通过复用先验经验，避免在每个新任务上都完全从零开始搜索，从而加速收敛过程、减少所需的评估次数，甚至可能发现更好的架构解。
 
 本文第 \ref{sec:ch4-evolutionary-transfer-nas-heterogeneous-spaces} 章的研究工作（\textsc{Bridge}）将聚焦于 TNAS 领域中的一个前沿且极具挑战性的问题：跨异构搜索空间的知识迁移。该问题的设定是：当源域搜索空间 $\mathcal{A}^{(S)}$ 与目标域搜索空间 $\mathcal{A}^{(T)}$ 在基础架构范式、操作符集合、连接规则或单元结构等方面存在显著的、非平凡的差异时，如何设计有效的机制，将在 $\mathcal{A}^{(S)}$ 中学习到的有价值的架构知识，成功迁移至 $\mathcal{A}^{(T)}$ 的搜索过程中，并以此提升目标域 NAS 的效率与效果。
 
@@ -63,7 +63,7 @@
 \end{equation}
 在此优化目标中，$\theta$ 代表模型 $f$ 的可学习参数，$\mathbb{E}_{\mathcal{T} \sim p(\mathcal{T})}$ 表示在任务分布 $p(\mathcal{T})$ 上取期望，意在寻求在各种可能的少样本任务上的平均最优性能。$f_\theta(\mathcal{Q}|\mathcal{S})$ 表示模型利用支持集 $\mathcal{S}$ 提供的信息对查询集 $\mathcal{Q}$ 做出的预测结果，$\mathcal{Y}^q$ 则是查询集 $\mathcal{Q}$ 对应的真实标签集合。$\mathcal{L}$ 为适用于具体任务的损失函数，例如分类任务中常用的交叉熵损失。少样本学习的根本挑战在于如何从极度有限的类别内信息 $K$ 中学习到具有泛化能力的类别表示或判别边界\cite{matchingnetworksone_vinyals_2016,prototypicalnetworksfew_snell_2017,modelagnosticmeta_finn_2017}。
 
-\textbf{知识蒸馏（Knowledge Distillation, KD）} 则提供了一种在模型间传递知识的通用框架。其基本设定涉及一个预训练好的、性能较优的大型教师模型（Teacher Model）和一个待训练的、参数量较小的学生模型（Student Model）。为与后续章节保持符号一致性，我们将教师和学生的模型参数分别记为 $\Theta_T$ 和 $\Theta_S$。在某些情况下，我们可能还会利用教师模型在特定任务微调前的原始预训练状态，其参数记为 $\Theta_{T'}$。知识蒸馏的目标是训练学生模型 $\Theta_S$，使其能够模仿教师模型（如 $\Theta_T$ 或 $\Theta_{T'}$）的行为。令 $s_{\Theta_S}(x_i)$ 和 $s_{\Theta_T}(x_i)$ 分别表示学生和教师模型在输入 $x_i$ 上的 Logits 输出（或对应的评分函数），标准的蒸馏损失 $\mathcal{L}_\mathrm{KD}$ 通常基于两者经过温度 $T$ 平滑后的 Softmax 概率分布 $p_S$ 和 $p_T$ 之间的 KL 散度来定义：
+\textbf{知识蒸馏（Knowledge Distillation，KD）} 则提供了一种在模型间传递知识的通用框架。其基本设定涉及一个预训练好的、性能较优的大型教师模型（Teacher Model）和一个待训练的、参数量较小的学生模型（Student Model）。为与后续章节保持符号一致性，将教师和学生的模型参数分别记为 $\Theta_T$ 和 $\Theta_S$。在某些情况下，可能还会利用教师模型在特定任务微调前的原始预训练状态，其参数记为 $\Theta_{T'}$。知识蒸馏的目标是训练学生模型 $\Theta_S$，使其能够模仿教师模型（如 $\Theta_T$ 或 $\Theta_{T'}$）的行为。令 $s_{\Theta_S}(x_i)$ 和 $s_{\Theta_T}(x_i)$ 分别表示学生和教师模型在输入 $x_i$ 上的 Logits 输出（或对应的评分函数），标准的蒸馏损失 $\mathcal{L}_\mathrm{KD}$ 通常基于两者经过温度 $T$ 平滑后的 Softmax 概率分布 $p_S$ 和 $p_T$ 之间的 KL 散度来定义：
 \begin{gather}
 	p_S = \text{Softmax}(s_{\Theta_S}(x_i)/T), \quad p_T = \text{Softmax}(s_{\Theta_T}(x_i)/T) \label{eq:kd_softmax} \\
 	\mathcal{L}_\mathrm{KD}(p_T, p_S) = T^2 \cdot D_\mathrm{KL}(p_T || p_S) \label{eq:kd_loss}
@@ -85,7 +85,7 @@
 \begin{equation}
 	\theta_\mathrm{merged} = \text{Merge}(\{\theta_i\}_{i=1}^n, \alpha) \label{eq:merge_operator}
 \end{equation}
-bibi
+
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{task-arithmetic-crop.pdf}

@@ -3,8 +3,17 @@
 %=====你可以在这里使用\RequirePackage[包选项]{包名称}导入想用的Package=======
 
 \usepackage{fontspec}
-\setmainfont{Times New Roman}
+\setmainfont{TIMES.TTF}[Path={/usr/share/fonts/win-fonts/}]
+\setmonofont{COUR.TTF}[Path={/usr/share/fonts/win-fonts/}]
 \setCJKmainfont{simsun.ttf}[AutoFakeSlant,AutoFakeBold]
+\setCJKsansfont{SimHei.ttf}
+% \setCJKmonofont{MapleMono-NF-CN-Regular.ttf}[AutoFakeSlant,AutoFakeBold,Path={/usr/share/fonts/win-fonts/}]
+
+\setCJKfamilyfont{zhsong}{simsun.ttf}
+\setCJKfamilyfont{zhhei}{SimHei.ttf}
+
+\renewcommand{\songti}{\CJKfamily{zhsong}}
+\renewcommand{\heiti}{\CJKfamily{zhhei}}
 
 \usepackage[linesnumbered,ruled,vlined,resetcount,algochapter]{algorithm2e}
 \usepackage{dsfont}

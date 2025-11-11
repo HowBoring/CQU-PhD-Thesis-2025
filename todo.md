@@ -1,132 +1,27 @@
-# PhD Thesis Todo List
-
-This document outlines the plan for completing the PhD thesis based on the provided `outline.xml`.
-
-## I. Thesis Content Generation (Chapter by Chapter)
-
-The main task is to write the content for each chapter as defined in `outline.xml`. The chapters will be written in separate `.tex` files located in the `contents/` directory.
-
-- [ ] **Chapter 1: Introduction (绪论)**
-    - [ ] Section 1.1: Research Background and Significance (研究背景与意义)
-        - [ ] Write content based on `outline.xml` objectives and points.
-        - [ ] Create Figure F1-1: "DeepModel_Cost_Trends".
-        - [ ] Add references for scaling/energy consumption reports.
-    - [ ] Section 1.2: Literature Review (国内外研究现状)
-        - [ ] Write a comprehensive review of KD, NAS, and model merging.
-        - [ ] Create Table TB1-1: "RelatedWork_Map".
-        - [ ] Add references for KD/Prompt, NAS, and model merging.
-    - [ ] Section 1.3: Research Outline and Overall Idea (研究主线与总体思路)
-        - [ ] Define the three-layer progressive main line.
-        - [ ] Create Figure F1-2: "Overall_Framework".
-        - [ ] Align with the three supporting papers for chapters 3, 4, and 5.
-
-- [ ] **Chapter 2: Theoretical Foundations (多层次知识迁移的理论基础)**
-    - [ ] Section 2.1: Transfer Learning, Meta-Learning, and Transfer Optimization (迁移学习、元学习与迁移优化)
-        - [ ] Clarify concepts and differences.
-        - [ ] Add references for transfer optimization and multi-task learning.
-    - [ ] Section 2.2: Unified Mathematical Formulation of Transfer Optimization (统一的迁移优化数学表述)
-        - [ ] Provide the general formula and examples for each layer.
-        - [ ] Create Table TB2-1: "Transfer_Regularizers".
-    - [ ] Section 2.3: Efficiency Metrics and Evaluation System (效率度量与评价指标体系)
-        - [ ] Define unified efficiency accounting and statistical confidence measures.
-
-- [ ] **Chapter 3: Knowledge-Level Transfer (知识层迁移)**
-    - [ ] **Strictly align with `Prompt-Distiller...pdf`**
-    - [ ] Section 3.1: Problem Definition and Challenges (问题定义与挑战)
-    - [ ] Section 3.2: Method Design: Prompt-Distiller Framework (方法设计：Prompt-Distiller 框架)
-        - [ ] Create Figure F3-1: "PromptDistiller_Pipeline".
-        - [ ] Create Figure F3-2: "Loss_Illustration".
-    - [ ] Section 3.3: Experiments and Result Analysis (实验与结果分析)
-        - [ ] Create Table TB3-1: "FewShot_Benchmarks".
-        - [ ] Create Table TB3-2: "Ablations".
-        - [ ] Create Figure F3-3: "Sensitivity_Curves".
-    - [ ] Section 3.4: Summary (小结)
-
-- [ ] **Chapter 4: Structure-Level Transfer (结构层迁移)**
-    - [ ] **Strictly align with `Evolutionary_Transfer...pdf`**
-    - [ ] Section 4.1: Problem Background and Motivation (问题背景与动机)
-    - [ ] Section 4.2: Unified Encoding and Representation Learning (统一编码与表征学习)
-        - [ ] Create Figure F4-1: "Tokenizer_Illustration".
-        - [ ] Create Figure F4-2: "VAE_Architecture".
-    - [ ] Section 4.3: Cross-Domain Latent Space Mapping and Explicit Solution Transfer (跨域潜空间映射与显式解迁移)
-    - [ ] Section 4.4: Evolutionary Sequential Transfer Optimization (ESTO) (进化顺序迁移优化 (ESTO))
-        - [ ] Create Figure F4-3: "Evolutionary_Transfer_Loop".
-    - [ ] Section 4.5: Experiments and Result Analysis (实验与结果分析)
-        - [ ] Create Table TB4-1: "Reconstruction_and_KTau".
-        - [ ] Create Table TB4-2: "CrossDomain_Search_Efficiency".
-        - [ ] Create Figure F4-4: "Latent_MDS".
-        - [ ] Create Figure F4-5: "Evo_Trajectory".
-    - [ ] Section 4.6: Summary (小结)
-
-- [ ] **Chapter 5: Parameter-Level Transfer (参数层迁移)**
-    - [ ] **Strictly align with `KG_MFTO.pdf`**
-    - [ ] Section 5.1: Problem Motivation and Task Characterization (问题动机与任务刻画)
-    - [ ] Section 5.2: Multi-Form Transfer Optimization (MFTO) Perspective and System Design (多形态迁移优化(MFTO)视角与系统设计)
-        - [ ] Create Figure F5-1: "KG_Schema".
-        - [ ] Create Figure F5-2: "Curriculum_Picker".
-    - [ ] Section 5.3: Knowledge-Guided Evolutionary Solver (知识引导的演化求解器)
-        - [ ] Create Figure F5-3: "DualWarmStart".
-    - [ ] Section 5.4: Experiments and Ablations (实验与消融)
-        - [ ] Create Table TB5-1: "Merging_Benchmarks".
-        - [ ] Create Table TB5-2: "Ablations".
-    - [ ] Section 5.5: Summary and Practical Guidelines (小结与实践准则)
-
-- [ ] **Chapter 6: Unified Analysis and Extensions (统一分析与扩展)**
-    - [ ] Section 6.1: Theoretical Mapping and Information Flow between Layers (层次间的理论映射与信息流)
-        - [ ] Create Figure F6-1: "CrossLevel_Mapping".
-    - [ ] Section 6.2: Cross-Layer Coordinated Optimization Framework (跨层协同优化框架)
-        - [ ] Create Figure F6-2: "Coordinate_Optimization_Flow".
-    - [ ] Section 6.3: Future Directions (扩展方向)
-
-- [ ] **Chapter 7: Conclusion and Future Work (总结与展望)**
-    - [ ] Section 7.1: Research Summary (研究总结)
-    - [ ] Section 7.2: Future Work (展望)
-
-- [ ] **Front Matter & Appendices**
-    - [ ] Abstract (Chinese & English)
-    - [ ] Acknowledgements
-    - [ ] Table of Contents
-    - [ ] Symbols and Notations
-    - [ ] Appendix A: Experiment Configurations and Hyperparameters
-    - [ ] Appendix B: Formula Derivations and Symbol Explanations
-    - [ ] Appendix C: Additional Figures/Tables and Implementation Details
-
-## II. Bibliography and References
-
-- [ ] Create a complete `refs.bib` file in the `ref/` directory.
-- [ ] Gather all references mentioned in `outline.xml`.
-- [ ] Use web search to find full citation details for all references.
-- [ ] Ensure the citation style matches `gbt7714-numerical_new.bst`.
-
-## III. Figures and Tables
-
-- [ ] Create all figures and tables as specified in `outline.xml`.
-- [ ] Place all figures in the `figures/` directory, organized by chapter.
-- [ ] Ensure all figures and tables are correctly referenced in the text.
-- [ ] Ensure the visual style is consistent and professional.
-
-## IV. Verification and Completion Checklist
-
-- [ ] **LaTeX Compilation:**
-    - [ ] Compile the entire thesis using the provided `Makefile`.
-    - [ ] Resolve all LaTeX errors and warnings.
-    - [ ] Ensure all cross-references (chapters, sections, figures, tables, citations) are correct.
-    - [ ] Generate the final `main.pdf` document.
-- [ ] **Content Verification:**
-    - [ ] Review each chapter against this `todo.md` and `outline.xml` to ensure all points are covered.
-    - [ ] Proofread the entire document for grammatical errors, typos, and clarity.
-    - [ ] Verify that the content from the three supporting PDFs is accurately and strictly aligned in Chapters 3, 4, and 5.
-- [ ] **Formatting and Style:**
-    - [ ] Ensure the thesis conforms to the `cquthesis.cls` style guide.
-    - [ ] Check all fonts, margins, and layouts.
-    - [ ] Verify the Table of Contents, List of Figures, and List of Tables are generated correctly.
-
-## V. Project Structure and File Management
-
-- **`main.tex`**: This is the root file. It should include all other parts of the thesis.
-- **`contents/`**: This directory will hold the `.tex` files for each chapter.
-- **`figures/`**: This directory will store all images and plots.
-- **`ref/`**: This directory contains the bibliography file `refs.bib`.
-- **No modifications to `contents/` directory for now.**
-
-This plan will be executed sequentially. I will start with Chapter 1 and proceed through the document. I will provide updates as I complete major sections.
+| 序号 | 原文片段 | 问题类型 | 修改建议 |
+| -- | -- | -- | -- |
+| 1 | contents/1-introduction_cleaned.tex:12 “首次系统提出"三步走"战略目标” | 标点不统一/直引号 | 改为：“首次系统提出“‘三步走’”战略目标”或直接用中文引号：“首次系统提出“三步走”战略目标”。 |
+| 2 | contents/2-related-work_cleaned.tex:19 “规模-效率困境” | 连接号不统一 | 统一为“规模–效率困境”。 |
+| 3 | contents/1-introduction_cleaned.tex:164 “规模-效率矛盾” | 连接号不统一 | 统一为“规模–效率矛盾”。 |
+| 4 | contents/1-introduction_cleaned.tex:14 “以NLP领域的GPT模型” | 中英文混排空格 | 改为“以 NLP 领域的 GPT 模型”。同句内诸如 “Vision Transformer (ViT)” 建议“Vision Transformer（ViT）”。 |
+| 5 | contents/1-introduction_cleaned.tex:25 “ILSVRC竞赛…ILSVRC2012子集” | 中英文混排空格 | 改为“ILSVRC 竞赛…ILSVRC 2012 子集”。 |
+| 6 | contents/1-introduction_cleaned.tex:25 “累计 3000 亿+ 页面的长期开放网页语料库” | 书面表达不严谨（“+”不宜） | 改为“累计超过 3000 亿个页面的长期开放网页语料库”。 |
+| 7 | contents/1-introduction_cleaned.tex:29 “特别是GPU的广泛应用…相比CPU而言” | 中英文混排空格 | 改为“特别是 GPU 的广泛应用…相比 CPU 而言”。 |
+| 8 | contents/3-prompt-distiller_cleaned.tex:10 “数据于知识获取环节” | 笔误/用字错误 | 改为“数据与知识获取环节”。 |
+| 9 | contents/3-prompt-distiller_cleaned.tex:206 “例如RoBERTa-large模型” | 中英文混排空格 | 改为“例如 RoBERTa-large 模型”。 |
+| 10 | contents/3-prompt-distiller_cleaned.tex:212 “（例如 $B=4$ 或 8）” | 数学环境不一致/格式 | 统一为“（例如 $B=4$ 或 $8$）”。 |
+| 11 | contents/3-prompt-distiller_cleaned.tex:322 “例如SST-2由78.4\%降至75.3\%” | 中英文混排空格/可读性 | 改为“例如 SST-2 由 78.4\% 降至 75.3\%”。 |
+| 12 | contents/2-related-work_cleaned.tex:46 “Logits 除以 $T$” | 大小写/术语一致 | 统一为“logits 除以 $T$”。 |
+| 13 | contents/2-related-work_cleaned.tex:46-51 “\mathcal{L}\mathrm{…} 与 其他章节 \mathcal{L}{\text{…}} 并存” | 记号体例不一致 | 建议统一损失项下标体例为 \mathrm：如 \mathcal{L}\mathrm{KD}、\mathcal{L}\mathrm{MLM}、\mathcal{L}_\mathrm{CPD}。 |
+| 14 | contents/4-bridge-nas_cleaned.tex:14（整句多处）“挑战 ，…框架 (\textsc{Bridge}) 。…机制 与…” | 中文标点空格/中英文括号混用 | 删除中文标点前后空格；中文语境统一中文括号；改为“…挑战，…框架（\textsc{Bridge}）。…机制与…”。 |
+| 15 | contents/4-bridge-nas_cleaned.tex:21 “导致训练开销与计算预算成数量级增长。” | 搭配不当 | 改为“呈数量级增长”。 |
+| 16 | contents/4-bridge-nas_cleaned.tex:19 “自注意力与Transformer所引发的范式转移” | 中英文混排空格 | 改为“自注意力与 Transformer 所引发的范式转移”。 |
+| 17 | contents/6-conclusion_cleaned.tex:13 “第3章提出 Prompt-Distiller：” | 中英文混排空格/冒号风格 | 改为“第 3 章提出 Prompt-Distiller：…”。（中文冒号已正确） |
+| 18 | contents/5-kg-mfto-merge_cleaned.tex:343 “Graph Attention Networks (GATs)…model–task” | 中英标点/连接号一致性 | 中文段落中统一“（Graph Attention Networks，GAT）”；连接号均用“–”。 |
+| 19 | contents/7-appendix_cleaned.tex:25-28 “影响因子: 12.0 (2024) 14.5 (5年)” | 冒号/括号中文化 | 改为“影响因子：12.0（2024）、14.5（5 年）”。相邻条目同改。 |
+| 20 | contents/8-ack_cleaned.tex:18 “总是说:“凡事尽力就好，身后还有我们.”” | 冒号与引号 | 改为“总是说：“凡事尽力就好，身后还有我们。””。 |
+| 21 | contents/8-ack_cleaned.tex:10-24 多处抒情化表达（“时光荏苒…滋味”“点亮了月光”等） | 风格不符（过于文学化） | 如需全篇风格统一为学术化，建议简化为客观致谢（示例见下）。 |
+| 22 | contents/1-introduction_cleaned.tex:15 “Vision Transformer (ViT)” | 括号风格 | 统一为“Vision Transformer（ViT）”。 |
+| 23 | contents/1-introduction_cleaned.tex:31 “据预测，到2030年” | 数字与量词空格 | 改为“据预测，到 2030 年”。 |
+| 24 | contents/5-kg-mfto-merge_cleaned.tex:223 “softmax 参数化…如 1e-6” | 中英文混排空格 | 改为“softmax 参数化…如 1e−6”。中文语境英文词与数字前后加空格。 |
+| 25 | contents/4-bridge-nas_cleaned.tex:404/468 “——” | 破折号使用 | 可改为逗号/括注或“即/从而”等：如“进一步设计 ESTO 算法，…”。 |
